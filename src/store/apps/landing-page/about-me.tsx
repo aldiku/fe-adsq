@@ -1,89 +1,136 @@
-import axiosInstance, { getEndpoint } from '@/utils/api/getApi'
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { Dispatch } from 'react'
+import axiosInstance, { getEndpoint } from "@/utils/api/getApi";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import type { RootState, AppDispatch } from "@/store";
 
-interface Redux {
-    getState: any
-    dispatch: Dispatch<any>
+// ===== Types =====
+export interface AboutMe {
+  id: number;
+  name: string;
+  bio: string;
+  // add more fields that match your API
 }
 
-export const fetchAboutMe = createAsyncThunk('appAboutMe/fetchAboutMe', async (params: any) => {
-    const response = await axiosInstance.get(getEndpoint('about_me'), {
-        params
-    })
+export interface AboutMeParams {
+  page?: number;
+  limit?: number;
+  search?: string;
+}
 
-    return response.data
-})
+export interface AboutMeListResponse {
+  data: AboutMe[];
+  recordsTotal: number;
+}
 
-export const fetchAboutMeById = createAsyncThunk('appAboutMe/fetchAboutMeById', async (id: number) => {
-    const response = await axiosInstance.get(`${getEndpoint('about_me')}/${id}`)
+export interface AboutMeDetailResponse {
+  data: AboutMe;
+}
 
-    return response.data
-})
+interface AppAboutMeState {
+  data: AboutMe[] | AboutMe;
+  total: number;
+  params: AboutMeParams;
+  loading: boolean;
+}
 
-export const addAboutMe = createAsyncThunk(
-    'appAboutMe/addAboutMe',
-    async (data: any, { getState, dispatch }: Redux) => {
-        const response = await axiosInstance.post(getEndpoint('about_me'), data)
+// ===== Initial State =====
+const initialState: AppAboutMeState = {
+  data: [],
+  total: 0,
+  params: {},
+  loading: false,
+};
 
-        dispatch(fetchAboutMe(getState().AboutMe.params))
+// ===== Async Thunks =====
+export const fetchAboutMe = createAsyncThunk<
+  AboutMeListResponse, // return type
+  AboutMeParams,       // argument type
+  { state: RootState }
+>("appAboutMe/fetchAboutMe", async (params) => {
+  const response = await axiosInstance.get<AboutMeListResponse>(
+    getEndpoint("about_me"),
+    { params }
+  );
+  return response.data;
+});
 
-        return response.data
-    }
-)
+export const fetchAboutMeById = createAsyncThunk<
+  AboutMeDetailResponse,
+  number
+>("appAboutMe/fetchAboutMeById", async (id) => {
+  const response = await axiosInstance.get<AboutMeDetailResponse>(
+    `${getEndpoint("about_me")}/${id}`
+  );
+  return response.data;
+});
 
-export const editAboutMe = createAsyncThunk(
-    'appAboutMe/editAboutMe',
-    async (data: { id: number; newData: any }, { getState, dispatch }: Redux) => {
-        const response = await axiosInstance.put(`${getEndpoint('about_me')}/${data.id}`, data)
+export const addAboutMe = createAsyncThunk<
+  AboutMe,
+  AboutMe,
+  { state: RootState; dispatch: AppDispatch }
+>("appAboutMe/addAboutMe", async (data, { getState, dispatch }) => {
+  const response = await axiosInstance.post<AboutMe>(
+    getEndpoint("about_me"),
+    data
+  );
 
-        dispatch(fetchAboutMe(getState().AboutMe.params))
+  dispatch(fetchAboutMe(getState().AboutMe.params));
+  return response.data;
+});
 
-        return response.data
-    }
-)
+export const editAboutMe = createAsyncThunk<
+  AboutMe,
+  { id: number; newData: Partial<AboutMe> },
+  { state: RootState; dispatch: AppDispatch }
+>("appAboutMe/editAboutMe", async ({ id, newData }, { getState, dispatch }) => {
+  const response = await axiosInstance.put<AboutMe>(
+    `${getEndpoint("about_me")}/${id}`,
+    newData
+  );
 
-export const deleteAboutMe = createAsyncThunk(
-    'appAboutMe/deleteAboutMe',
-    async (id: number | string, { getState, dispatch }: Redux) => {
-        const response = await axiosInstance.delete(`${getEndpoint('about_me')}/${id}`)
+  dispatch(fetchAboutMe(getState().AboutMe.params));
+  return response.data;
+});
 
-        dispatch(fetchAboutMe(getState().AboutMe.params))
+export const deleteAboutMe = createAsyncThunk<
+  { success: boolean },
+  number,
+  { state: RootState; dispatch: AppDispatch }
+>("appAboutMe/deleteAboutMe", async (id, { getState, dispatch }) => {
+  const response = await axiosInstance.delete<{ success: boolean }>(
+    `${getEndpoint("about_me")}/${id}`
+  );
 
-        return response.data
-    }
-)
+  dispatch(fetchAboutMe(getState().AboutMe.params));
+  return response.data;
+});
 
+// ===== Slice =====
 export const appAboutMeSlice = createSlice({
-    name: 'appAboutMe',
-    initialState: {
-        data: [],
-        total: 0,
-        params: {},
-        loading: false
-    },
-    reducers: {},
-    extraReducers: builder => {
-        builder
-            .addCase(fetchAboutMe.pending, state => {
-                state.loading = true
-            })
-            .addCase(fetchAboutMe.fulfilled, (state, action) => {
-                state.loading = false
-                state.data = action.payload.data
-                state.total = action.payload.recordsTotal
-                state.params = action.meta.arg
-            })
+  name: "appAboutMe",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      // fetchAboutMe
+      .addCase(fetchAboutMe.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchAboutMe.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data = action.payload.data;
+        state.total = action.payload.recordsTotal;
+        state.params = action.meta.arg;
+      })
 
-        builder
-            .addCase(fetchAboutMeById.pending, state => {
-                state.loading = true
-            })
-            .addCase(fetchAboutMeById.fulfilled, (state, action) => {
-                state.loading = false
-                state.data = action.payload.data
-            })
-    }
-})
+      // fetchAboutMeById
+      .addCase(fetchAboutMeById.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchAboutMeById.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data = action.payload.data;
+      });
+  },
+});
 
-export default appAboutMeSlice.reducer
+export default appAboutMeSlice.reducer;

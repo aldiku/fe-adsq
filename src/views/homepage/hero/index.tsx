@@ -4,11 +4,11 @@ import "@splidejs/react-splide/css";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 import React from "react";
 
-import HeroSmsAds from "../../sms-advertising-page/hero";
-import HeroWhatsappBusiness from "../../whatsapp-business-page/hero";
-import HeroOutdoorAds from "../../outdoor-advertising-page/hero";
-import HeroOnlineAds from "../../online-advertising-page/hero";
 import HeroMain from "./heroMain";
+// import HeroSmsAds from "./heroSmsAds";
+// import HeroWhatsappBusiness from "./heroWhatsappBusiness";
+// import HeroOutdoorAds from "./heroOutdoorAds";
+// import HeroOnlineAds from "./heroOnlineAds";
 
 const Hero = () => {
   return (
@@ -59,4 +59,6 @@ export default Hero;
 // ];
 
 // eslint-disable-next-line react/jsx-key
-const herosDynamic = [<HeroMain />, <HeroSmsAds />, <HeroWhatsappBusiness />, <HeroOutdoorAds />, <HeroOnlineAds />];
+// const herosDynamic = [<HeroMain />, <HeroSmsAds />, <HeroWhatsappBusiness />, <HeroOutdoorAds />, <HeroOnlineAds />];
+
+const herosDynamic = [<HeroMain key={"hero"}/>];
