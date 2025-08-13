@@ -22,7 +22,12 @@ const OurClients = () => {
 
   return (
     <>
-      <Box sx={{ paddingY: 0 }}>
+      <Box 
+        sx={{ 
+          paddingY: 0,
+          backgroundColor: "background.paper",
+        }}
+      >
         <Container>
           <Box
             sx={({ breakpoints }) => ({
@@ -30,7 +35,7 @@ const OurClients = () => {
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-
+              gap: "0.5rem",
               [breakpoints.up("md")]: {
                 display: "flex",
                 justifyContent: "center",
@@ -39,11 +44,12 @@ const OurClients = () => {
             data-aos="fade-down"
           >
             <Typography
+              variant="h1"
               sx={{
-                color: "#58595B",
-                fontWeight: 600,
-                fontSize: "27px",
-                letterSpacing: "-.5px",
+                color: "text.primary",
+                // fontWeight: 600,
+                // fontSize: "27px",
+                // letterSpacing: "-.5px",
                 textAlign: "center",
               }}
             >
@@ -51,12 +57,13 @@ const OurClients = () => {
               {data?.title ?? "-"}
             </Typography>
             <Typography
+              variant="body1"
               sx={{
-                color: "#58595B",
-                fontWeight: 700,
-                fontSize: "32px",
-                mt: "-5px",
-                letterSpacing: "-.5px",
+                color: "text.secondary",
+                // fontWeight: 700,
+                // fontSize: "32px",
+                // mt: "-5px",
+                // letterSpacing: "-.5px",
                 textAlign: { xs: "center", md: "left" },
               }}
             >

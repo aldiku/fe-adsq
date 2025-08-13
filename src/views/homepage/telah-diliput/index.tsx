@@ -38,8 +38,21 @@ const TelahDiliput = () => {
   return (
     <>
       <Container>
-        <Grid data-aos="fade-up">
-          <Typography sx={{ fontSize: "32px", fontWeight: 700, color: "#6D6E70", textAlign: "center" }}>
+        <Grid 
+          data-aos="fade-up"
+          sx={{ 
+            py: "2rem",
+          }}
+        >
+          <Typography 
+            variant="h1"
+            sx={{ 
+              // fontSize: "32px", 
+              // fontWeight: 700, 
+              color: "text.primary", 
+              textAlign: "center" 
+              }}
+            >
             {/* Telah Diliput Oleh */}
             {data?.title}
           </Typography>

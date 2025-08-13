@@ -31,14 +31,17 @@ const LayananAdsqoo = () => {
     <>
       <Box
         bgcolor="background.paper"
-        sx={{ pt: 4, width: "100%" }}
+        sx={{ 
+          py: "2.5rem",
+          width: "100%" 
+        }}
       >
         <Container>
           <Grid
             container
             sx={{
               justifyContent: "center",
-              gap: 2,
+              gap: "2rem",  
               // px: {
               //   md: 14,
               //   xs: 3,
@@ -63,7 +66,7 @@ const LayananAdsqoo = () => {
                 variant="body1"
                 color="text.secondary"
                 sx={{
-                  mt: 1,
+                  mt: "1rem",
                   textAlign: "center",
                   maxWidth: "800px",
                   // fontWeight: 400,

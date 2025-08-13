@@ -42,8 +42,13 @@ const AlasanBeriklan = () => {
 	return (
 		<Box
 			bgcolor="background.paper"
-			sx={{ pt: 4, width: "100%" }}
-			padding={4}
+			sx={{ py: "2.5rem", width: "100%" }}
+			paddingX={{
+				xs: "1rem",
+				sm: "2rem",
+				md: "4rem",
+				xl: "8rem",
+			}}
 		>
 			<Box
 				sx={{
@@ -53,26 +58,26 @@ const AlasanBeriklan = () => {
 					alignItems: "flex-start",
 					borderRadius: "2.5rem",
 					background: "radial-gradient(147.47% 141.42% at 0% 0%, #762793 0%, rgba(118, 39, 147, 0.00) 100%), radial-gradient(100.2% 141.42% at 100% 100%, #ED821B 0%, rgba(237, 130, 27, 0.00) 100%), radial-gradient(184.9% 141.42% at 0% 100%, #EE3040 0%, rgba(238, 48, 64, 0.00) 100%), radial-gradient(244% 141.42% at 100% 0%, #AA4862 0%, rgba(170, 72, 98, 0.00) 100%)",
-					gap: "1rem",
+					gap: "1.5rem",
 				}}
 			>
-				<Box data-aos="fade-down">
+				<Box 
+					data-aos="fade-down"
+					display={{ xs: "block", md: "flex" }}
+					flexDirection={"column"}
+					sx={{
+						gap: "0.5rem",
+					}}
+				>
 					<Typography
 						variant="h1"
 						color="background.default"
-						sx={{
-							textAlign: "left",
-							textTransform: "uppercase",
-						}}
 					>
 						{reasonData?.title}
 					</Typography>
 					<Typography
 						variant="body1"
-						color="background.default"
-						sx={{
-							textAlign: "left",
-						}}
+						color="background.paper"
 					>
 						{reasonData?.description}
 					</Typography>
@@ -105,7 +110,9 @@ const AlasanBeriklan = () => {
 								// 	md: 'calc(33.333% - 12px)', // 4/12 = third width
 								// 	lg: 'calc(25% - 12px)'    // 3/12 = quarter width
 								// },
-								minWidth: 0 // prevents overflow
+								boxShadow: "2px 2px 12px rgba(0, 0, 0, 0.1)",
+								borderRadius: "2rem",
+								minWidth: 0, // prevents overflow
 							}}
 						>
 							<Card sx={{

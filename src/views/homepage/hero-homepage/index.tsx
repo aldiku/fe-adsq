@@ -10,6 +10,7 @@ import { ResponseMasterImageSlider } from "@/types/landing-page/image-slider.typ
 import { AppDispatch, RootState } from "@/store";
 import { useRouter } from "next/navigation";
 import { fetchImageSlider } from "@/store/landing-page/image-slider";
+import { gray } from "@/theme/theme";
 
 const HeroSectionLandingPageViews = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -146,7 +147,18 @@ const HeroViews = (props: Props) => {
           }}
         />
         <Box sx={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.5)' }} />
-        <Container maxWidth="lg" sx={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', px: 10, pb: 20, pt: 20 }}>
+        <Container 
+          maxWidth="lg" 
+          sx={{ 
+            position: 'relative', 
+            height: '100%', 
+            display: 'flex', 
+            flexDirection: 'column', 
+            px: {xs: 6, sm: 10}, 
+            pb: 20, 
+            pt: {xs: 6, sm: 20}, 
+          }}
+        >
           <Box
             sx={{
               display: 'flex',
@@ -183,12 +195,14 @@ const HeroViews = (props: Props) => {
                   onClick={() => route.push(data?.button_order?.cta)}
                   sx={{ 
                     color: "white", 
-                    backgroundColor: 'red', 
-                    paddingX: '3rem',
+                    backgroundColor: 'primary.main', 
+                    // border: '1px solid white',
+                    // boxShadow: `inset 0 2px 0 hsl(260, 23%, 97%, 0.5), inset 0 -1px 0 1px hsl(220, 0%, 0%, 0.1)`,
+                    paddingX: '2rem',
                     paddingY: '0.5rem',
                     borderRadius: '2rem',
-                    '&:hover': { backgroundColor: 'darkred' },
-                    '&:active': { backgroundColor: 'darkred' }
+                    '&:hover': { backgroundColor: 'primary.dark' },
+                    '&:active': { backgroundColor: 'primary.dark' }
                   }}
                 >
                   Order
@@ -202,7 +216,7 @@ const HeroViews = (props: Props) => {
                   sx={{
                     color: 'white',
                     borderColor: 'white',
-                    paddingX: '2.5rem',
+                    paddingX: '1.5rem',
                     paddingY: '0.5rem',
                     borderRadius: '2rem', 
                     '&:hover': { borderColor: 'white', backgroundColor: 'rgba(255,255,255,0.08)' },
@@ -219,7 +233,7 @@ const HeroViews = (props: Props) => {
                   sx={{
                     color: 'white',
                     borderColor: 'white',
-                    paddingX: '2.5rem',
+                    paddingX: '1.5rem',
                     paddingY: '0.5rem', 
                     borderRadius: '2rem',
                     '&:hover': { borderColor: 'white', backgroundColor: 'rgba(255,255,255,0.08)' },
@@ -236,7 +250,7 @@ const HeroViews = (props: Props) => {
                   sx={{
                     color: 'white',
                     borderColor: 'white',
-                    paddingX: '2.5rem',
+                    paddingX: '1.5rem',
                     paddingY: '0.5rem', 
                     borderRadius: '2rem',
                     '&:hover': { borderColor: 'white', backgroundColor: 'rgba(255,255,255,0.08)' },

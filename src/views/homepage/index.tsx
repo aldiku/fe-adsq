@@ -12,20 +12,32 @@ import HeroSectionLandingPageViews from "./hero-homepage";
 const HomePage = () => {
   return (
     <>
-      <Grid sx={{ width: "100%", overflow: "hidden" }}>
+      <Grid 
+        sx={{ 
+          width: "100%",
+          overflow: "hidden",
+          backgroundColor:"background.paper",
+        }}
+      >
         <Grid className="shadow-lg">
           <HeroSectionLandingPageViews />
         </Grid>
 
-        <Grid sx={{ my: { xs: 7, md: 10 } }}>
+        <Grid 
+          // sx={{ my: { xs: 7, md: 10 } }}
+          >
           <LangkahPasangIklan />
         </Grid>
 
-        <Grid sx={{ my: { xs: 15, md: 20 } }}>
+        <Grid 
+          // sx={{ my: { xs: 15, md: 20 } }}
+          >
           <AdsqooDesc />
         </Grid>
 
-        <Grid sx={{ my: { xs: 5, md: 0 } }}>
+        <Grid 
+          // sx={{ my: { xs: 5, md: 0 } }}
+        >
           <AlasanBeriklan />
         </Grid>
 
@@ -33,19 +45,27 @@ const HomePage = () => {
           <LayananAdsqoo />
         </Grid>
 
-        <Grid sx={{ my: { xs: 15, md: 20 } }}>
+        <Grid 
+          // sx={{ my: { xs: 15, md: 20 } }}
+        >
           <OurClients />
         </Grid>
 
-        <Grid sx={{ my: { xs: 15, md: 20 } }}>
+        <Grid 
+          // sx={{ my: { xs: 15, md: 20 } }}
+        >
           <Testimoni />
         </Grid>
 
-        <Grid sx={{ my: { xs: 15 } }}>
+        <Grid 
+          // sx={{ my: { xs: 15 } }}
+        >
           <TelahDiliput />
         </Grid>
 
-        <Grid sx={{ my: { xs: 15 } }}>
+        <Grid 
+          // sx={{ my: { xs: 15 } }}
+        >
           <BannerIklan />
         </Grid>
       </Grid>

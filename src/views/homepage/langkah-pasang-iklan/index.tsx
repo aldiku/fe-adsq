@@ -22,14 +22,13 @@ const LangkahPasangIklan = () => {
 
   return (
     <>
-      <Container>
+      <Container sx={{ py: "2.5rem", width: "100%" }}>
         <Box>
           <Typography
             variant="h1"
             color="text"
             sx={{
               textAlign: "center",
-              textTransform: "uppercase"
               // fontSize: "32px",
               // letterSpacing: "-.3px",
               // fontWeight: 600,
