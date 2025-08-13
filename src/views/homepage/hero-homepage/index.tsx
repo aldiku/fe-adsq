@@ -2,10 +2,10 @@
 
 import { Fragment } from "react";
 import React, { useState, useEffect } from "react";
-import { Fade, Box, IconButton, Button, Container } from "@mui/material";
+import { Fade, Box, IconButton, Button, Container, Typography } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ResponseMasterImageSlider } from "@/types/landing-page/image-slider.types";
 import { AppDispatch, RootState } from "@/store";
 import { useRouter } from "next/navigation";
@@ -17,7 +17,7 @@ const HeroSectionLandingPageViews = () => {
 
   const dispatch = useDispatch<AppDispatch>();
 
- const carouselData: ResponseMasterImageSlider['data'] = useSelector((state: RootState) => state?.ImageSlider)?.data ?? [];
+  const carouselData: ResponseMasterImageSlider['data'] = useSelector((state: RootState) => state?.ImageSlider)?.data ?? [];
 
 
   const sortedItem = carouselData?.length > 0 ? [...carouselData].sort((a, b) => a.order_list - b.order_list) : [];
@@ -49,14 +49,14 @@ const HeroSectionLandingPageViews = () => {
   };
 
   const handlePrev = () => {
-    setFade(false);
+    // setFade(false);
     setTimeout(() => {
       if (activeIndex === 0) {
         setActiveIndex(sortedItem?.length - 1);
       } else {
         setActiveIndex(activeIndex - 1);
       }
-      setFade(true);
+      // setFade(true);
     }, 500);
   };
 
@@ -146,12 +146,12 @@ const HeroViews = (props: Props) => {
           }}
         />
         <Box sx={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.5)' }} />
-        <Container maxWidth="lg" sx={{ position: 'relative',  height: '100%', display: 'flex', flexDirection: 'column', px: 10, pb: 20, pt: 20 }}>
+        <Container maxWidth="lg" sx={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', px: 10, pb: 20, pt: 20 }}>
           <Box
             sx={{
               display: 'flex',
               flexDirection: 'column',
-             
+
               color: 'white',
               maxWidth: '600px',
               lg: {
@@ -162,40 +162,87 @@ const HeroViews = (props: Props) => {
               },
             }}
           >
-            <h1
+            {/* <h1
               style={{
                 fontSize: '3rem',
-                fontWeight: '600',
-                lineHeight: '1.1',
+                fontWeight: '800',
+                lineHeight: '1',
               }}
             >
-              {data?.headline}
-            </h1>
-            <h1 style={{ marginTop: '0.25rem', fontSize: '3rem', fontWeight: '800', letterSpacing: '0.05em' }}>
-              {data?.tagline}
-            </h1>
+              {data?.headline} {data?.tagline}
+            </h1> */}
+            <Typography variant="h2" component={"h1"}>
+              {data?.headline} {data?.tagline}
+            </Typography>
             <p style={{ marginTop: '1.5rem', fontSize: '1.125rem' }}>
               {data?.description}
             </p>
             <Box sx={{ marginTop: '2.5rem', display: 'flex', flexDirection: 'column', gap: '0.75rem', "@media (min-width: 768px)": { flexDirection: 'row' }, lg: { justifyContent: 'flex-start' } }}>
               {data?.button_order?.show && (
-                <Button onClick={() => route.push(data?.button_order?.cta)} sx={{ color: "white",backgroundColor: 'red', paddingX: '3rem', '&:hover': { backgroundColor: 'darkred' }, '&:active': { backgroundColor: 'darkred' } }}>
+                <Button
+                  onClick={() => route.push(data?.button_order?.cta)}
+                  sx={{ 
+                    color: "white", 
+                    backgroundColor: 'red', 
+                    paddingX: '3rem',
+                    paddingY: '0.5rem',
+                    borderRadius: '2rem',
+                    '&:hover': { backgroundColor: 'darkred' },
+                    '&:active': { backgroundColor: 'darkred' }
+                  }}
+                >
                   Order
                 </Button>
               )}
 
               {data?.button_book_meeting?.show && (
-                <Button onClick={() => route.push(data?.button_book_meeting?.cta)} sx={{ color: "white",backgroundColor: 'green', paddingX: '2.5rem', '&:hover': { backgroundColor: 'darkgreen' }, '&:active': { backgroundColor: 'darkgreen' } }}>
+                <Button
+                  variant="outlined"
+                  onClick={() => route.push(data?.button_book_meeting?.cta)}
+                  sx={{
+                    color: 'white',
+                    borderColor: 'white',
+                    paddingX: '2.5rem',
+                    paddingY: '0.5rem',
+                    borderRadius: '2rem', 
+                    '&:hover': { borderColor: 'white', backgroundColor: 'rgba(255,255,255,0.08)' },
+                    '&:active': { borderColor: 'white', backgroundColor: 'rgba(255,255,255,0.16)' },
+                  }}
+                >
                   Book Meeting
                 </Button>
               )}
-                {data?.button_contact_us?.show && (
-                <Button onClick={() => route.push(data?.button_contact_us?.cta)} sx={{ color: "white", backgroundColor: 'purple', paddingX: '2.5rem', '&:hover': { backgroundColor: 'darkpurple' }, '&:active': { backgroundColor: 'darkpurple' } }}>
+              {data?.button_contact_us?.show && (
+                <Button
+                  variant="outlined"
+                  onClick={() => route.push(data?.button_contact_us?.cta)}
+                  sx={{
+                    color: 'white',
+                    borderColor: 'white',
+                    paddingX: '2.5rem',
+                    paddingY: '0.5rem', 
+                    borderRadius: '2rem',
+                    '&:hover': { borderColor: 'white', backgroundColor: 'rgba(255,255,255,0.08)' },
+                    '&:active': { borderColor: 'white', backgroundColor: 'rgba(255,255,255,0.16)' },
+                  }}
+                >
                   Contact Us
                 </Button>
-                )}
+              )}
               {data?.button_free_trial?.show && (
-                <Button onClick={() => route.push(data?.button_free_trial?.cta)} sx={{ color:"white",backgroundColor: 'blue', paddingX: '2.5rem', '&:hover': { backgroundColor: 'darkblue' }, '&:active': { backgroundColor: 'darkblue' } }}>
+                <Button
+                  variant="outlined"
+                  onClick={() => route.push(data?.button_free_trial?.cta)}
+                  sx={{
+                    color: 'white',
+                    borderColor: 'white',
+                    paddingX: '2.5rem',
+                    paddingY: '0.5rem', 
+                    borderRadius: '2rem',
+                    '&:hover': { borderColor: 'white', backgroundColor: 'rgba(255,255,255,0.08)' },
+                    '&:active': { borderColor: 'white', backgroundColor: 'rgba(255,255,255,0.16)' },
+                  }}
+                >
                   Free Trial
                 </Button>
               )}

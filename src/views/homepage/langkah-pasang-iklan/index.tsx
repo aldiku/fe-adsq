@@ -25,12 +25,15 @@ const LangkahPasangIklan = () => {
       <Container>
         <Box>
           <Typography
+            variant="h1"
+            color="text"
             sx={{
-              fontSize: "32px",
               textAlign: "center",
-              letterSpacing: "-.3px",
-              fontWeight: 500,
-              color: "#58595B",
+              textTransform: "uppercase"
+              // fontSize: "32px",
+              // letterSpacing: "-.3px",
+              // fontWeight: 600,
+              // color: "theme.colorSchemes.light.palette.text.warning",
             }}
           >
             Langkah Mudah Pasang Iklan di Adsqoo
@@ -60,9 +63,9 @@ const LangkahPasangIklan = () => {
             >
               <Box
                 sx={{
+                  backgroundColor: theme => theme.palette.primary.main,
                   width: "105px",
                   height: "105px",
-                  backgroundColor: "#FE3168",
                   borderRadius: "50%",
                   display: "flex",
                   alignItems: "center",
@@ -86,13 +89,15 @@ const LangkahPasangIklan = () => {
               >
                 {/* <Typography>{`${index + 1}.`}</Typography> */}
                 <Typography
+                  variant="body1"
+                  color="text.primary"
                   sx={{
                     textAlign: "center",
-                    fontSize: "16px",
                     lineHeight: "1.3",
-                    letterSpacing: "-.3px",
-                    color: "#58595B",
-                    fontWeight: 500,
+                  //   fontSize: "16px",
+                  //   letterSpacing: "-.3px",
+                  //   color: "#58595B",
+                    // fontWeight: 500,
                   }}
                 >{`${index + 1}. ${item?.title}`}</Typography>
               </Box>

@@ -51,24 +51,29 @@ const [data, setData] = useState<AboutMe | null>(null);
         >
           <Box sx={{ mt: 3 }}>
             <Typography
+              variant="h1"
+              color="text.primary"
               sx={{
-                fontSize: "32px",
-                fontWeight: 700,
-                color: "#6D6E70",
-                letterSpacing: "-1px",
+                textTransform: "uppercase",
+                // fontSize: "32px",
+                // fontWeight: 700,
+                // color: "#6D6E70",
+                // letterSpacing: "-1px",
                 "@media(width < 1200px)": { textAlign: "center" },
               }}
             >
               {data?.data[0]?.title ?? "-"}
             </Typography>
             <Typography
+              variant="body1"
+              color="text.secondary"
               sx={{
                 mt: 2,
-                fontSize: "20px",
-                fontWeight: 300,
-                color: "#58595B",
-                letterSpacing: "-.5px",
-                lineHeight: "1.5",
+                // fontSize: "20px",
+                // fontWeight: 300,
+                // color: "#58595B",
+                // letterSpacing: "-.5px",
+                lineHeight: "1.2",
                 mr: 5,
                 "@media(width < 1200px)": { mr: 0, textAlign: "justify" },
               }}
