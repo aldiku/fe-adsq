@@ -30,40 +30,54 @@ const LayananAdsqoo = () => {
   return (
     <>
       <Box
-        sx={{ pt: 10, width: "100%", backgroundColor: "rgba(187,189,191, .17)" }}
+        bgcolor="background.paper"
+        sx={{ 
+          py: "2.5rem",
+          width: "100%" 
+        }}
       >
         <Container>
           <Grid
             container
             sx={{
-              px: {
-                md: "150px",
-                xs: 3,
-              }
+              justifyContent: "center",
+              gap: "2rem",  
+              // px: {
+              //   md: 14,
+              //   xs: 3,
+              // }
             }}
           >
             <Box data-aos="fade-down">
               <Typography
+                variant="h1"
+                color="text.primary"
                 sx={{
-                  fontWeight: 700,
-                  color: "#6D6E70",
-                  fontSize: "30px"
+                  textTransform: "uppercase",
+                  textAlign: "center",
+                  // fontWeight: 700,
+                  // color: "#6D6E70",
+                  // fontSize: "30px"
                 }}
               >
                 {data?.title}
               </Typography>
               <Typography
+                variant="body1"
+                color="text.secondary"
                 sx={{
-                  fontWeight: 400,
-                  mt: 1,
-                  color: "#6D6E70",
-                  fontSize: "22px",
-                  letterSpacing: "-.7px",
+                  mt: "1rem",
+                  textAlign: "center",
+                  maxWidth: "800px",
+                  // fontWeight: 400,
+                  // color: "#6D6E70",
+                  // fontSize: "22px",
+                  // letterSpacing: "-.7px",
                   "@media(width< 900px)": {
                     mr: 0,
                     mt: 3,
                     mb: 6,
-                    textAlign: "center",
+                    // textAlign: "center",
                   },
                 }}
               >
@@ -71,18 +85,18 @@ const LayananAdsqoo = () => {
               </Typography>
             </Box>
 
-            <Grid
-              item xs={12} container
+            {/* <Grid
+              // item xs={12} container
               data-aos="fade-up"
-              sx={{
-                display: "grid",
-                gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
-                "@media( 900px <= width < 1200px)": {
-                  gridTemplateColumns: "1fr 1.2fr",
-                },
-              }}
-            >
-              <Grid
+              // sx={{
+                // display: "grid",
+                // gridTemplateColumns: { xs: "1fr", md: "1fr" },
+                // "@media( 900px <= width < 1200px)": {
+                //   gridTemplateColumns: "1fr 1.2fr",
+                // },
+              // }}
+            > */}
+              {/* <Grid
                 sx={{
                   display: "grid",
                   position: "relative",
@@ -101,17 +115,18 @@ const LayananAdsqoo = () => {
                     position: "absolute",
                   }}
                 />
-              </Grid>
+              </Grid> */}
               <Grid
-                container
-                spacing={2}
+                container spacing={1}
                 sx={{
                   display: "flex",
                   alignItems: "stretch",
-                  justifyContent: "end",
+                  flexWrap: "wrap",
+                  gap: 1.5,
+                  justifyContent: "center",
                   mt: 0,
-                  paddingBottom: "50px",
-                  zIndex: "1",
+                  paddingBottom: "20px",
+                  // zIndex: "1",
                 }}
               >
                 {sortedItem?.map((item, index) => {
@@ -119,13 +134,15 @@ const LayananAdsqoo = () => {
                   const image = process.env.NEXT_PUBLIC_HOST_URL_IMAGE + item?.image
 
                   return (
-                    <Grid key={index} container item xs={12} md={6}>
+                    <Grid key={index}>
                       <Card
                         sx={{
                           background: "white",
-                          paddingBottom: 3,
+                          paddingBottom: 1,
                           marginX: "auto",
-                          width: { xs: "75%", md: "100%" },
+                          // width: { xs: "75%", md: "100%" },
+                          borderRadius: "2rem",
+                          boxShadow: "2px 2px 12px rgba(0, 0, 0, 0.1)",
                         }}
                       >
                         <Box
@@ -135,6 +152,7 @@ const LayananAdsqoo = () => {
                             alignItems: "center",
                             justifyContent: "start",
                             paddingY: { xs: "10px", md: "10px" },
+                            paddingX: "1rem",
                             height: "100%",
                           }}
                         >
@@ -145,7 +163,7 @@ const LayananAdsqoo = () => {
                             sx={{
                               width: { xs: "100px", md: "100%" },
                               height: "auto",
-                              maxWidth: { sm: "95px", lg: "155px" },
+                              maxWidth: { sm: "100px", lg: "160px" },
                               aspectRatio: "1 / 1",
                               marginTop: 3,
                               marginX: 3,
@@ -156,14 +174,15 @@ const LayananAdsqoo = () => {
                             }}
                           />
                           <Typography
+                            variant="body1"
                             fontWeight={700}
-                            color="#58595B"
+                            color="text.primary"
                             textAlign="center"
-                            marginTop={2}
+                            marginTop={1}
                             marginBottom={1}
-                            fontSize="16px"
+                            // fontSize="16px"
                             sx={{
-                              letterSpacing: "-.3px",
+                              letterSpacing: -0.4
                             }}
                           >
                             {item?.name}
@@ -179,24 +198,30 @@ const LayananAdsqoo = () => {
                             {/* <Link href={item?.path}> */}
                             <Button
                               sx={{
+                                borderRadius: "2rem",
                                 width: "100%",
-                                maxWidth: {
-                                  xs: "100px",
-                                  sm: "120px",
-                                  md: "155px",
-                                },
+                                // maxWidth: {
+                                //   xs: "100px",
+                                //   sm: "120px",
+                                //   md: "155px",
+                                // },
                                 color: "white",
                                 fontSize: {
                                   xs: "12px",
                                   sm: "14px",
                                   md: "16px",
                                 },
-                                background:
-                                  "radial-gradient(circle, rgba(251,55,66,1) 0%, rgba(217,61,131,1) 48%, rgba(193,36,116,1) 100%)",
-                                "&:hover": {
-                                  background:
-                                    "radial-gradient(circle, rgba(191,31,41,1) 0%, rgba(203,51,119,1) 74%, rgba(166,41,104,1) 100%)",
-                                },
+                                backgroundColor: 
+                                  "primary.main",
+                                  "&:hover": {
+                                    backgroundColor: "primary.dark",
+                                  }
+                                // background:
+                                //   "radial-gradient(circle, rgba(251,55,66,1) 0%, rgba(217,61,131,1) 48%, rgba(193,36,116,1) 100%)",
+                                // "&:hover": {
+                                //   background:
+                                //     "radial-gradient(circle, rgba(191,31,41,1) 0%, rgba(203,51,119,1) 74%, rgba(166,41,104,1) 100%)",
+                                // },
                               }}
                               onClick={() => {
                                 handleButtonSelanjutnya(item?.path);
@@ -212,7 +237,7 @@ const LayananAdsqoo = () => {
                   )
                 })}
               </Grid>
-            </Grid>
+            {/* </Grid> */}
           </Grid>
         </Container>
       </Box>

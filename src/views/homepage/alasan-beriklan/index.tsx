@@ -37,37 +37,47 @@ const AlasanBeriklan = () => {
 
 	const reasonData = data?.data?.[0];
 
-	if (loading) return null; 
+	if (loading) return null;
 
 	return (
 		<Box
-			sx={{
-				width: "100%",
-				background: "radial-gradient(circle, rgba(191,32,38,1) 0%, rgba(191,44,110,1) 55%, rgba(182,36,110,1) 100%)",
-				py: 15,
+			bgcolor="background.paper"
+			sx={{ py: "2.5rem", width: "100%" }}
+			paddingX={{
+				xs: "1rem",
+				sm: "2rem",
+				md: "4rem",
+				xl: "8rem",
 			}}
 		>
-			<Container>
-				<Box data-aos="fade-down">
+			<Box
+				sx={{
+					display: "flex",
+					padding: 4,
+					flexDirection: "column",
+					alignItems: "flex-start",
+					borderRadius: "2.5rem",
+					background: "radial-gradient(147.47% 141.42% at 0% 0%, #762793 0%, rgba(118, 39, 147, 0.00) 100%), radial-gradient(100.2% 141.42% at 100% 100%, #ED821B 0%, rgba(237, 130, 27, 0.00) 100%), radial-gradient(184.9% 141.42% at 0% 100%, #EE3040 0%, rgba(238, 48, 64, 0.00) 100%), radial-gradient(244% 141.42% at 100% 0%, #AA4862 0%, rgba(170, 72, 98, 0.00) 100%)",
+					gap: "1.5rem",
+				}}
+			>
+				<Box 
+					data-aos="fade-down"
+					display={{ xs: "block", md: "flex" }}
+					flexDirection={"column"}
+					sx={{
+						gap: "0.5rem",
+					}}
+				>
 					<Typography
-						sx={{
-							color: "white",
-							textAlign: "center",
-							fontWeight: 600,
-							fontSize: "31px",
-							letterSpacing: "-.3px",
-						}}
+						variant="h1"
+						color="background.default"
 					>
 						{reasonData?.title}
 					</Typography>
 					<Typography
-						sx={{
-							mt: 0.3,
-							color: "white",
-							textAlign: "center",
-							fontWeight: 200,
-							fontSize: "28px",
-						}}
+						variant="body1"
+						color="background.paper"
 					>
 						{reasonData?.description}
 					</Typography>
@@ -75,11 +85,18 @@ const AlasanBeriklan = () => {
 
 				<Box
 					sx={{
-						display: 'flex',
-						flexWrap: 'wrap',
-						justifyContent: 'center',
-						gap: 3, // equivalent to spacing={3}
-						mt: 4,
+						// display: 'flex',
+						// flexWrap: 'wrap',
+						// alignSelf: 'stretch',
+						// gap: 1.5,
+						display: 'grid',
+						gridTemplateColumns: {
+							xs: '1fr',
+							sm: '1fr 1fr',
+							md: '1fr 1fr',
+							lg: '1fr 1fr 1fr 1fr'
+						},
+						gap: 1.5,
 					}}
 					data-aos="fade-up"
 				>
@@ -87,43 +104,43 @@ const AlasanBeriklan = () => {
 						<Box
 							key={index}
 							sx={{
-								width: {
-									xs: '100%',    // 12/12 = full width
-									sm: 'calc(50% - 24px)',   // 6/12 = half width (minus gap)
-									md: 'calc(33.333% - 24px)', // 4/12 = third width
-									lg: 'calc(25% - 24px)'    // 3/12 = quarter width
-								},
-								minWidth: 0 // prevents overflow
+								// width: {
+								// 	xs: '100%',    // 12/12 = full width
+								// 	sm: 'calc(50% - 12px)',   // 6/12 = half width (minus gap)
+								// 	md: 'calc(33.333% - 12px)', // 4/12 = third width
+								// 	lg: 'calc(25% - 12px)'    // 3/12 = quarter width
+								// },
+								boxShadow: "2px 2px 12px rgba(0, 0, 0, 0.1)",
+								borderRadius: "2rem",
+								minWidth: 0, // prevents overflow
 							}}
 						>
-							<Card sx={{ height: "100%", background: "white", py: { xs: 3, md: 0 } }}>
+							<Card sx={{
+								display: "flex",
+								flexDirection: "column",
+								alignItems: "flex-start",
+								height: "100%",
+								background: "white",
+								// py: { xs: 3, md: 0 },
+								padding: "1rem",
+								borderRadius: "1rem",
+							}}
+							>
 								<CardContent>
-									<Box
-										sx={{
-											display: "flex",
-											flexDirection: "column",
-											alignItems: "center",
-											justifyContent: "start",
-										}}
-									>
-										<Icon icon={item?.icon} style={{ height: "50px", width: "auto" }} />
+									<Icon icon={item?.icon} style={{ height: "50px", width: "auto" }} />
+									<Box>
 										<Typography
+											variant="body1"
 											fontWeight={700}
-											color="#58595B"
-											textAlign="center"
-											mt={1}
-											mb={1}
-											fontSize="16px"
-											sx={{ letterSpacing: "-.3px" }}
+											color="text.primary"
+											textAlign="left"
 										>
 											{item.title}
 										</Typography>
 										<Typography
-											textAlign="center"
-											fontSize="14px"
-											color="#58595B"
-											fontWeight={400}
-											sx={{ letterSpacing: "-.3px" }}
+											variant="body2"
+											textAlign="left"
+											color="text.secondary"
 										>
 											{item.description}
 										</Typography>
@@ -133,9 +150,9 @@ const AlasanBeriklan = () => {
 						</Box>
 					))}
 				</Box>
-			</Container>
+			</Box>
 		</Box>
 	);
 };
 
-export default AlasanBeriklan;
+export default AlasanBeriklan

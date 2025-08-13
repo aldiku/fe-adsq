@@ -6,7 +6,12 @@ import TestimoniCarousel from "./testimoni-carousel";
 const Testimoni = () => {
   return (
     <>
-      <Box sx={{ paddingY: 5, backgroundColor: "rgba(187,189,191, .17)" }}>
+      <Box 
+        sx={{ 
+          paddingY: "2rem", 
+          backgroundColor: "background.paper",
+        }}
+      >
         <Container>
           <Box
             sx={({ breakpoints }) => ({
@@ -14,7 +19,7 @@ const Testimoni = () => {
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-
+              
               [breakpoints.up("md")]: {
                 display: "flex",
                 justifyContent: "center",
@@ -23,12 +28,14 @@ const Testimoni = () => {
             data-aos="fade-down"
           >
             <Typography
+              variant="h1"
               sx={{
-                color: "#6D6E70",
-                fontWeight: 700,
-                fontSize: "32px",
-                letterSpacing: "-.5px",
+                color: "text.primary",
+                // fontWeight: 700,
+                // fontSize: "32px",
+                // letterSpacing: "-.5px",
                 textAlign: "center",
+                pb: "1rem",
               }}
             >
               Apa Kata Mereka Tentang Adsqoo!
