@@ -29,10 +29,6 @@ const LangkahPasangIklan = () => {
             color="text"
             sx={{
               textAlign: "center",
-              // fontSize: "32px",
-              // letterSpacing: "-.3px",
-              // fontWeight: 600,
-              // color: "theme.colorSchemes.light.palette.text.warning",
             }}
           >
             Langkah Mudah Pasang Iklan di Adsqoo
@@ -93,10 +89,6 @@ const LangkahPasangIklan = () => {
                   sx={{
                     textAlign: "center",
                     lineHeight: "1.3",
-                  //   fontSize: "16px",
-                  //   letterSpacing: "-.3px",
-                  //   color: "#58595B",
-                    // fontWeight: 500,
                   }}
                 >{`${index + 1}. ${item?.title}`}</Typography>
               </Box>

@@ -53,7 +53,7 @@ const AlasanBeriklan = () => {
 			<Box
 				sx={{
 					display: "flex",
-					padding: 4,
+					padding: "2rem",
 					flexDirection: "column",
 					alignItems: "flex-start",
 					borderRadius: "2.5rem",
@@ -85,10 +85,6 @@ const AlasanBeriklan = () => {
 
 				<Box
 					sx={{
-						// display: 'flex',
-						// flexWrap: 'wrap',
-						// alignSelf: 'stretch',
-						// gap: 1.5,
 						display: 'grid',
 						gridTemplateColumns: {
 							xs: '1fr',
@@ -96,7 +92,7 @@ const AlasanBeriklan = () => {
 							md: '1fr 1fr',
 							lg: '1fr 1fr 1fr 1fr'
 						},
-						gap: 1.5,
+						gap: "1rem",
 					}}
 					data-aos="fade-up"
 				>
@@ -104,12 +100,6 @@ const AlasanBeriklan = () => {
 						<Box
 							key={index}
 							sx={{
-								// width: {
-								// 	xs: '100%',    // 12/12 = full width
-								// 	sm: 'calc(50% - 12px)',   // 6/12 = half width (minus gap)
-								// 	md: 'calc(33.333% - 12px)', // 4/12 = third width
-								// 	lg: 'calc(25% - 12px)'    // 3/12 = quarter width
-								// },
 								boxShadow: "2px 2px 12px rgba(0, 0, 0, 0.1)",
 								borderRadius: "2rem",
 								minWidth: 0, // prevents overflow
@@ -121,12 +111,18 @@ const AlasanBeriklan = () => {
 								alignItems: "flex-start",
 								height: "100%",
 								background: "white",
-								// py: { xs: 3, md: 0 },
-								padding: "1rem",
 								borderRadius: "1rem",
+								gap: "2rem",
 							}}
 							>
-								<CardContent>
+								<CardContent
+									sx={{
+										display: "flex",
+										flexDirection: "column",
+										alignItems: "flex-start",
+										gap: { xs: "0.5rem", md: "1rem" },
+									}}
+								>
 									<Icon icon={item?.icon} style={{ height: "50px", width: "auto" }} />
 									<Box>
 										<Typography

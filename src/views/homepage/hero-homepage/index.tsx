@@ -19,7 +19,7 @@ const HeroSectionLandingPageViews = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const carouselData: ResponseMasterImageSlider['data'] = useSelector((state: RootState) => state?.ImageSlider)?.data ?? [];
-
+  // fix: const carouselData = useSelector((state: RootState) => state?.ImageSlider)?.data ?? [];
 
   const sortedItem = carouselData?.length > 0 ? [...carouselData].sort((a, b) => a.order_list - b.order_list) : [];
 

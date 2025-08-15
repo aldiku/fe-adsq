@@ -47,9 +47,6 @@ const OurClients = () => {
               variant="h1"
               sx={{
                 color: "text.primary",
-                // fontWeight: 600,
-                // fontSize: "27px",
-                // letterSpacing: "-.5px",
                 textAlign: "center",
               }}
             >
@@ -60,10 +57,6 @@ const OurClients = () => {
               variant="body1"
               sx={{
                 color: "text.secondary",
-                // fontWeight: 700,
-                // fontSize: "32px",
-                // mt: "-5px",
-                // letterSpacing: "-.5px",
                 textAlign: { xs: "center", md: "left" },
               }}
             >

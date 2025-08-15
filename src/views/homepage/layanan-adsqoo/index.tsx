@@ -180,7 +180,6 @@ const LayananAdsqoo = () => {
                             textAlign="center"
                             marginTop={1}
                             marginBottom={1}
-                            // fontSize="16px"
                             sx={{
                               letterSpacing: -0.4
                             }}
@@ -200,11 +199,6 @@ const LayananAdsqoo = () => {
                               sx={{
                                 borderRadius: "2rem",
                                 width: "100%",
-                                // maxWidth: {
-                                //   xs: "100px",
-                                //   sm: "120px",
-                                //   md: "155px",
-                                // },
                                 color: "white",
                                 fontSize: {
                                   xs: "12px",
@@ -216,12 +210,6 @@ const LayananAdsqoo = () => {
                                   "&:hover": {
                                     backgroundColor: "primary.dark",
                                   }
-                                // background:
-                                //   "radial-gradient(circle, rgba(251,55,66,1) 0%, rgba(217,61,131,1) 48%, rgba(193,36,116,1) 100%)",
-                                // "&:hover": {
-                                //   background:
-                                //     "radial-gradient(circle, rgba(191,31,41,1) 0%, rgba(203,51,119,1) 74%, rgba(166,41,104,1) 100%)",
-                                // },
                               }}
                               onClick={() => {
                                 handleButtonSelanjutnya(item?.path);

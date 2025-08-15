@@ -46,7 +46,6 @@ const AdsqooDesc = () => {
             width: "100%",
             rowGap: 5,
             columnGap: 5,
-            // px: { xs: 5 },
           }}
           data-aos="fade-down"
         >
@@ -55,16 +54,12 @@ const AdsqooDesc = () => {
               width: "100%",
               display: "flex",
               flexDirection: "column",
-              // alignItems: { sm: "center", md: "flex-start" },
               gap: "1rem"
             }}
           >
             <Typography
               variant="h1"
               color="text.primary"
-              sx={{
-                // "@media(width < 1200px)": { textAlign: "center" },
-              }}
             >
               {data?.data[0]?.title ?? "-"}
             </Typography>
@@ -73,13 +68,7 @@ const AdsqooDesc = () => {
               color="text.secondary"
               maxWidth={{ xs: "100%", sm: "600px" }}
               sx={{
-                // fontSize: "20px",
-                // fontWeight: 300,
-                // color: "#58595B",
-                // letterSpacing: "-.5px",
-                // lineHeight: "1.2",
                 mr: { xs: 0, sm: 5 },
-                // "@media(width < 1200px)": { mr: 0, textAlign: "justify" },
               }}
             >
               <span dangerouslySetInnerHTML={{ __html: data?.data[0]?.description ?? "" }} />
@@ -89,7 +78,6 @@ const AdsqooDesc = () => {
             sx={{
               width: "100%",
               display: "flex",
-              // justifyContent: { md: "center" },
               "@media(width < 900px)": { height: "350px" },
             }}
           >
