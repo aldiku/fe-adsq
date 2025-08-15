@@ -45,16 +45,16 @@ export const brand = {
 };
 
 export const gray = {
-    50: 'hsl(220, 35%, 97%)',
-    100: 'hsl(220, 30%, 94%)',
-    200: 'hsl(220, 20%, 88%)',
-    300: 'hsl(220, 20%, 80%)',
-    400: 'hsl(220, 20%, 65%)',
-    500: 'hsl(220, 20%, 42%)',
-    600: 'hsl(220, 20%, 35%)',
-    700: 'hsl(220, 20%, 25%)',
-    800: 'hsl(220, 30%, 6%)',
-    900: 'hsl(220, 35%, 3%)',
+    50 : 'hsl(220, 0%, 97%)',
+    100: 'hsl(220, 0%, 94%)',
+    200: 'hsl(220, 0%, 88%)',
+    300: 'hsl(220, 0%, 80%)',
+    400: 'hsl(220, 0%, 65%)',
+    500: 'hsl(220, 0%, 42%)',
+    600: 'hsl(220, 0%, 35%)',
+    700: 'hsl(220, 0%, 25%)',
+    800: 'hsl(220, 0%, 18%)',
+    900: 'hsl(220, 0%, 3%)',
 };
 
 export const green = {
@@ -385,10 +385,11 @@ export const typography = {
         fontWeight: 600,
     },
     subtitle1: {
-        fontSize: defaultTheme.typography.pxToRem(18),
+        fontSize: defaultTheme.typography.pxToRem(12),
+        lineHeight: 1.5,
     },
     subtitle2: {
-        fontSize: defaultTheme.typography.pxToRem(14),
+        fontSize: defaultTheme.typography.pxToRem(10),
         fontWeight: 500,
     },
     body1: {

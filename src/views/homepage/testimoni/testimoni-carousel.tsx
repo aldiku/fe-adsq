@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Card, Typography } from "@mui/material";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
@@ -27,8 +27,8 @@ const TestimoniCarousel = () => {
 
   useEffect(() => {
     if (width < 1200 && width >= 850) setTotalImage(2);
-    else if (width < 850) setTotalImage(1);
-    else setTotalImage(3);
+    else if (width < 900) setTotalImage(1);
+    else setTotalImage(2);
   }, [width]);
 
   return (
@@ -36,6 +36,7 @@ const TestimoniCarousel = () => {
       <Box sx={{ position: "relative", margin: "auto" }}>
         {data_testimonial?.length > 0 ? (
           <Splide
+            className="testimoni-carousel"
             options={{
               type: "loop",
               interval: 3000,
@@ -63,73 +64,112 @@ const TestimoniCarousel = () => {
                       height: "100%",
                     }}
                   >
-                    <Grid sx={{ display: "grid", justifyContent: "center" }}>
-                      <Box sx={{ display: "flex", justifyContent: "center" }}>
+                    <Card
+                      sx={{
+                        display: "flex",
+                        width: "100%",
+                        height: "100%",
+                        boxShadow: "2px 2px 12px rgba(0, 0, 0, 0.1)",
+                        borderRadius: "2rem",
+                        overflow: "hidden",
+                        backgroundColor: "background.default",
+                        padding: "2rem",                        
+                        flexDirection: { xs: "column", sm: "row" },
+                        alignContent: { xs: "center", sm: "start" },
+                        justifyContent: { xs: "space-between", sm: "flex-start" }
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          width: { xs: "100%", sm: "40%" },
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          gap: "1rem",
+                          order: { xs: 1, sm: 0 },
+                        }}
+                      >
                         <Box
                           sx={{
                             display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            width: "130px",
-                            height: "130px",
-                            backgroundColor: "white",
+                            minWidth: "100px",
+                            maxWidth: "100px",
+                            minHeight: "100px",
+                            maxHeight: "100px",
                             borderRadius: "50%",
                             overflow: "hidden",
-                            marginBottom: "-50px",
-                            zIndex: "1",
                           }}
                         >
                           <img
                             src={image}
                             alt={item?.customer_name}
                             style={{
-                              width: "125px",
-                              height: "125px",
+                              width: "100px",
+                              height: "100px",
                               objectFit: "cover",
+                              borderRadius: "50%",
+                              display: "block",
                             }}
                           />
                         </Box>
-                      </Box>
-                      <Box
-                        sx={{
-                          minHeight: "450px",
-                          maxHeight: "450px",
-                          backgroundColor: "white",
-                          paddingX: "40px",
-                          paddingY: "20px",
-                          borderRadius: 3,
-                          boxShadow: "2.8px 2.8px 10px rgba(0, 0, 0, 0.4)",
-                          display: "flex",
-                          flexDirection: "column",
-                          justifyContent: "space-between",
-                        }}
-                      >
-                        <Box sx={{ mt: 5 }}>
+
+                        <Box
+                          sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                          }}
+                        >
                           <Typography
-                            sx={{ textAlign: "justify", fontWeight: 400 }}
-                          >
-                            {item?.testimonial_description}
-                          </Typography>
-                        </Box>
-                        <Box sx={{ mt: 5 }}>
-                          <Typography
+                            variant="subtitle1"
                             sx={{
                               fontWeight: 700,
-                              textAlign: "left",
-                              fontSize: "16px",
+                              textAlign: "center",
+                              lineHeight: 1.2,
                             }}
                           >
                             {item?.customer_name}
                           </Typography>
-                          <Typography sx={{ fontWeight: 500, textAlign: "left" }}>
+                          <Typography
+                            variant="subtitle2"
+                            color="text.secondary"
+                            sx={{
+                              textAlign: "center"
+                            }}
+                          >
                             {item?.customer_occupation}
                           </Typography>
                         </Box>
                       </Box>
-                    </Grid>
+
+                      <Box>
+                        <Typography
+                          variant="body2"
+                          color="text.primary"
+                          sx={{
+                            lineHeight: 1.2,
+                            maxWidth: "400px",
+                          }}
+                        >
+                          "{item?.testimonial_description}"
+                        </Typography>
+                      </Box>
+                    </Card>
                   </SplideSlide>
                 )
               })}
+            <style>{`
+                .testimoni-carousel .splide__arrow--next {
+                  // background: rgba(0,0,0,0.3);
+                  margin-right: -30px;
+                }
+                .testimoni-carousel .splide__arrow svg {
+                  fill: white !important;
+                }
+                .testimoni-carousel .splide__pagination {
+                  bottom: -12px !important;
+                }
+              `}</style>
           </Splide>
         ) : (
           <>

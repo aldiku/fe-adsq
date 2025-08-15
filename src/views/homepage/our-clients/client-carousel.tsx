@@ -121,11 +121,13 @@ const ClientCarousel = ({ data }:Props) => {
     .splide__arrow.splide__arrow--prev {
       margin-left: -30px;
       scale: 1.5;
+      background: transparent;
     }
 
     .splide__arrow.splide__arrow--next {
       margin-right: -35px;
       scale: 1.5;
+      background: transparent;
     }
   `}
       </style>
