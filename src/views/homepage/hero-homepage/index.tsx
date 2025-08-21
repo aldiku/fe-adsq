@@ -11,6 +11,7 @@ import { AppDispatch, RootState } from "@/store";
 import { useRouter } from "next/navigation";
 import { fetchImageSlider } from "@/store/landing-page/image-slider";
 import { gray } from "@/theme/theme";
+import { theme } from "@/theme/AppThemes";
 
 const HeroSectionLandingPageViews = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -73,14 +74,22 @@ const HeroSectionLandingPageViews = () => {
         ))}
         <IconButton
           onClick={handlePrev}
-          sx={{ position: 'absolute', left: 0, top: '50%', zIndex: 10, transform: 'translateY(-50%)', color: 'white' }}
+          sx={{ 
+            position: 'absolute', 
+            left: 0, top: '50%', 
+            zIndex: 10, 
+            transform: 'translateY(-50%)', 
+            color: 'white',
+            background: 'none',
+            border: 'none',
+          }}
         >
           <ArrowBackIosIcon />
         </IconButton>
 
         <IconButton
           onClick={handleNext}
-          sx={{ position: 'absolute', right: 0, top: '50%', zIndex: 10, transform: 'translateY(-50%)', color: 'white' }}
+          sx={{ position: 'absolute', right: 0, top: '50%', zIndex: 10, transform: 'translateY(-50%)', color: 'white', background: 'none', border: 'none',}}
         >
           <ArrowForwardIosIcon />
         </IconButton>
@@ -193,16 +202,11 @@ const HeroViews = (props: Props) => {
               {data?.button_order?.show && (
                 <Button
                   onClick={() => route.push(data?.button_order?.cta)}
+                  variant="contained"
+                  color="primary"
                   sx={{ 
-                    color: "white", 
-                    backgroundColor: 'primary.main', 
-                    // border: '1px solid white',
-                    // boxShadow: `inset 0 2px 0 hsl(260, 23%, 97%, 0.5), inset 0 -1px 0 1px hsl(220, 0%, 0%, 0.1)`,
+                    borderRadius: (theme.vars || theme).shape.pill,
                     paddingX: '2rem',
-                    paddingY: '0.5rem',
-                    borderRadius: '2rem',
-                    '&:hover': { backgroundColor: 'primary.dark' },
-                    '&:active': { backgroundColor: 'primary.dark' }
                   }}
                 >
                   Order
@@ -214,13 +218,8 @@ const HeroViews = (props: Props) => {
                   variant="outlined"
                   onClick={() => route.push(data?.button_book_meeting?.cta)}
                   sx={{
-                    color: 'white',
-                    borderColor: 'white',
+                    borderRadius: (theme.vars || theme).shape.pill,
                     paddingX: '1.5rem',
-                    paddingY: '0.5rem',
-                    borderRadius: '2rem', 
-                    '&:hover': { borderColor: 'white', backgroundColor: 'rgba(255,255,255,0.08)' },
-                    '&:active': { borderColor: 'white', backgroundColor: 'rgba(255,255,255,0.16)' },
                   }}
                 >
                   Book Meeting
@@ -231,13 +230,8 @@ const HeroViews = (props: Props) => {
                   variant="outlined"
                   onClick={() => route.push(data?.button_contact_us?.cta)}
                   sx={{
-                    color: 'white',
-                    borderColor: 'white',
+                    borderRadius: (theme.vars || theme).shape.pill,
                     paddingX: '1.5rem',
-                    paddingY: '0.5rem', 
-                    borderRadius: '2rem',
-                    '&:hover': { borderColor: 'white', backgroundColor: 'rgba(255,255,255,0.08)' },
-                    '&:active': { borderColor: 'white', backgroundColor: 'rgba(255,255,255,0.16)' },
                   }}
                 >
                   Contact Us
@@ -248,13 +242,8 @@ const HeroViews = (props: Props) => {
                   variant="outlined"
                   onClick={() => route.push(data?.button_free_trial?.cta)}
                   sx={{
-                    color: 'white',
-                    borderColor: 'white',
+                    borderRadius: (theme.vars || theme).shape.pill,
                     paddingX: '1.5rem',
-                    paddingY: '0.5rem', 
-                    borderRadius: '2rem',
-                    '&:hover': { borderColor: 'white', backgroundColor: 'rgba(255,255,255,0.08)' },
-                    '&:active': { borderColor: 'white', backgroundColor: 'rgba(255,255,255,0.16)' },
                   }}
                 >
                   Free Trial
