@@ -1,4 +1,5 @@
 import LangkahPasangIklan from "./langkah-pasang-iklan";
+import KenalinDashboard from "./kenalin-dashboard";
 import AdsqooDesc from "./adsqoo-desc";
 import AlasanBeriklan from "./alasan-beriklan";
 import LayananAdsqoo from "./layanan-adsqoo";
@@ -8,6 +9,9 @@ import TelahDiliput from "./telah-diliput";
 import BannerIklan from "./banner-iklan";
 import { Grid } from "@mui/material";
 import HeroSectionLandingPageViews from "./hero-homepage";
+import PaketLayanan from "./paket-layanan";
+import AffiliatePromo from "./affiliate-promo";
+import BlogSection from "./blog";
 
 const HomePage = () => {
   return (
@@ -21,6 +25,10 @@ const HomePage = () => {
       >
         <Grid className="shadow-lg">
           <HeroSectionLandingPageViews />
+        </Grid>
+        
+        <Grid className="shadow-lg">
+          <KenalinDashboard />
         </Grid>
 
         <Grid 
@@ -45,6 +53,10 @@ const HomePage = () => {
           <LayananAdsqoo />
         </Grid>
 
+        <Grid>
+          <PaketLayanan />
+        </Grid>
+
         <Grid 
           // sx={{ my: { xs: 15, md: 20 } }}
         >
@@ -61,6 +73,14 @@ const HomePage = () => {
           // sx={{ my: { xs: 15 } }}
         >
           <TelahDiliput />
+        </Grid>
+
+        <Grid>
+          <AffiliatePromo />
+        </Grid>
+
+        <Grid>
+          <BlogSection />
         </Grid>
 
         <Grid 

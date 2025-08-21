@@ -6,14 +6,22 @@ import { gray } from "@/theme/theme";
 
 const Testimoni = () => {
   return (
-    <>
+    <Box
+      paddingX={{
+				xs: "1rem",
+				sm: "2rem",
+				md: "4rem",
+				xl: "8rem",
+			}}
+    >
       <Box
         sx={{
           paddingY: "2rem",
           backgroundColor: gray[800],
-          margin: "2rem",
+          // margin: "4rem",
           borderRadius: "2rem",
         }}
+        
       >
         <Container>
           <Box
@@ -46,7 +54,7 @@ const Testimoni = () => {
           </Box>
         </Container>
       </Box>
-    </>
+    </Box>
   );
 };
 

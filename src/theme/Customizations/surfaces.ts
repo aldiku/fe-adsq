@@ -62,8 +62,8 @@ export const surfacesCustomizations: Components<Theme> = {
           padding: 16,
           gap: 16,
           transition: 'all 100ms ease',
-          backgroundColor: gray[50],
-          borderRadius: (theme.vars || theme).shape.borderRadius,
+          backgroundColor: (theme.vars || theme).palette.background.default,
+          borderRadius: '1.25rem',
           border: `1px solid ${(theme.vars || theme).palette.divider}`,
           boxShadow: 'none',
           ...theme.applyStyles('dark', {
@@ -77,7 +77,7 @@ export const surfacesCustomizations: Components<Theme> = {
               style: {
                 border: `1px solid ${(theme.vars || theme).palette.divider}`,
                 boxShadow: 'none',
-                background: 'hsl(0, 0%, 100%)',
+                background: (theme.vars || theme).palette.background.default,
                 ...theme.applyStyles('dark', {
                   background: alpha(gray[900], 0.4),
                 }),
