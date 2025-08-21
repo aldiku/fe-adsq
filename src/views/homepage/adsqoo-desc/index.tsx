@@ -11,7 +11,7 @@ import { getEndpoint, getMenuPath, getToken } from "@/utils/api/getApi";
 import getEncodedKey from "@/utils/api/getEncodedKey";
 
 const AdsqooDesc = () => {
-const [data, setData] = useState<AboutMe | null>(null);
+  const [data, setData] = useState<AboutMe | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +38,7 @@ const [data, setData] = useState<AboutMe | null>(null);
 
   return (
     <>
-      <Container>
+      <Container sx={{ py: "2.5rem", width: "100%" }}>
         <Grid
           sx={{
             display: "grid",
@@ -49,28 +49,26 @@ const [data, setData] = useState<AboutMe | null>(null);
           }}
           data-aos="fade-down"
         >
-          <Box sx={{ mt: 3 }}>
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              gap: "1rem"
+            }}
+          >
             <Typography
-              sx={{
-                fontSize: "32px",
-                fontWeight: 700,
-                color: "#6D6E70",
-                letterSpacing: "-1px",
-                "@media(width < 1200px)": { textAlign: "center" },
-              }}
+              variant="h1"
+              color="text.primary"
             >
               {data?.data[0]?.title ?? "-"}
             </Typography>
             <Typography
+              variant="body1"
+              color="text.secondary"
+              maxWidth={{ xs: "100%", sm: "600px" }}
               sx={{
-                mt: 2,
-                fontSize: "20px",
-                fontWeight: 300,
-                color: "#58595B",
-                letterSpacing: "-.5px",
-                lineHeight: "1.5",
-                mr: 5,
-                "@media(width < 1200px)": { mr: 0, textAlign: "justify" },
+                mr: { xs: 0, sm: 5 },
               }}
             >
               <span dangerouslySetInnerHTML={{ __html: data?.data[0]?.description ?? "" }} />
@@ -80,7 +78,6 @@ const [data, setData] = useState<AboutMe | null>(null);
             sx={{
               width: "100%",
               display: "flex",
-              justifyContent: "center",
               "@media(width < 900px)": { height: "350px" },
             }}
           >
@@ -92,7 +89,7 @@ const [data, setData] = useState<AboutMe | null>(null);
               }}
               data-aos="fade-up"
             >
-              <iframe width="578" height="325" src="https://www.youtube.com/embed/qFvQ0rMU6cs" title="Tutorial Top Up Token SMS Center - Adsqoo Indonesia" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+              <iframe width="100%" height="325" src="https://www.youtube.com/embed/qFvQ0rMU6cs" title="Tutorial Top Up Token SMS Center - Adsqoo Indonesia" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             </Box>
           </Box>
         </Grid>
