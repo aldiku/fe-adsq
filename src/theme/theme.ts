@@ -25,9 +25,21 @@ declare module '@mui/material/styles' {
     interface Palette {
         baseShadow: string;
     }
+
+    interface ThemeOptions {
+        shape: {
+            borderRadius: number;
+            pill: string;
+        };
+    }
 }
 
-const defaultTheme = createTheme();
+const defaultTheme = createTheme({
+    shape: {
+        borderRadius: 8,
+        pill: "2rem",
+    },
+});
 
 const customShadows: Shadows = [...defaultTheme.shadows];
 
@@ -37,11 +49,11 @@ export const brand = {
     200: 'hsl(0, 100%, 80%)',
     300: 'hsl(0, 100%, 65%)',
     400: 'hsl(351, 85%, 52%)',
-    500: 'hsl(0, 98%, 42%)',
-    600: 'hsl(0, 98%, 55%)',
+    500: 'hsl(0, 98%, 55%)',
+    600: 'hsl(0, 98%, 42%)',
     700: 'hsl(0, 100%, 35%)',
-    800: 'hsl(0, 100%, 16%)',
-    900: 'hsl(0, 100%, 21%)',
+    800: 'hsl(0, 100%, 21%)',
+    900: 'hsl(0, 100%, 16%)',
 };
 
 export const gray = {
@@ -408,6 +420,7 @@ export const typography = {
 
 export const shape = {
     borderRadius: 8,
+    pill: "2rem",
 };
 
 // @ts-ignore

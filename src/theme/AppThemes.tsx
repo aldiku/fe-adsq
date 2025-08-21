@@ -10,7 +10,7 @@ export const theme = createTheme({
   shadows,
   shape,
   components: {
-    // ...inputsCustomizations
+    ...inputsCustomizations,
     ...surfacesCustomizations,
   }
 });
