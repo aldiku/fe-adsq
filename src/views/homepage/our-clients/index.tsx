@@ -26,6 +26,7 @@ const OurClients = () => {
         sx={{ 
           paddingY: 0,
           backgroundColor: "background.paper",
+          py: { xs: "1rem", md: "2.5rem" },
         }}
       >
         <Container>

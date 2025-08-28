@@ -59,7 +59,7 @@ export const surfacesCustomizations: Components<Theme> = {
     styleOverrides: {
       root: ({ theme }) => {
         return {
-          padding: 16,
+          // padding: 16,
           gap: 16,
           transition: 'all 100ms ease',
           backgroundColor: (theme.vars || theme).palette.background.default,
@@ -91,8 +91,8 @@ export const surfacesCustomizations: Components<Theme> = {
   MuiCardContent: {
     styleOverrides: {
       root: {
-        padding: 0,
-        '&:last-child': { paddingBottom: 0 },
+        padding: "1rem",
+        '&:last-child': { paddingBottom: "1rem" },
       },
     },
   },

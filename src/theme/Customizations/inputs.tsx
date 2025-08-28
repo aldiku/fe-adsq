@@ -176,22 +176,22 @@ export const inputsCustomizations: Components<Theme> = {
               variant: 'text',
             },
             style: {
-              color: gray[600],
+              color: brand[600],
               '&:hover': {
-                backgroundColor: gray[100],
+                backgroundColor: brand[100],
               },
               '&:active': {
-                backgroundColor: gray[200],
+                backgroundColor: brand[200],
               },
-              ...theme.applyStyles('dark', {
-                color: gray[50],
-                '&:hover': {
-                  backgroundColor: gray[700],
-                },
-                '&:active': {
-                  backgroundColor: alpha(gray[700], 0.7),
-                },
-              }),
+              // ...theme.applyStyles('dark', {
+              //   color: gray[50],
+              //   '&:hover': {
+              //     backgroundColor: gray[700],
+              //   },
+              //   '&:active': {
+              //     backgroundColor: alpha(gray[700], 0.7),
+              //   },
+              // }),
             },
           },
           {

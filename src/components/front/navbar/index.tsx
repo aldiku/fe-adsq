@@ -29,8 +29,8 @@ import NavbarItems from "./navbar-items";
 import UserDropdown from "../shared/UserDropdown";
 
 
-dayjs.extend(isSameOrAfter);
-dayjs.extend(isSameOrBefore);
+// dayjs.extend(isSameOrAfter);
+// dayjs.extend(isSameOrBefore);
 
 export default function Navbar({ openSidebar }: { openSidebar: any }) {
   const [openNav, setOpenNav] = useState(true);

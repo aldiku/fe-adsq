@@ -9,7 +9,10 @@ import IconButton from "@mui/material/IconButton";
 import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 import Typography from "@mui/material/Typography";
 import HTMLReactParser, { HTMLReactParserOptions, DOMNode } from "html-react-parser";
-import { makeStyles , createStyles } from "@mui/styles";
+import { makeStyles, createStyles } from "@mui/styles";
+import { Box, Grid } from "@mui/material";
+import { theme } from "@/theme/AppThemes";
+import { shadows } from "@/theme/theme";
 
 interface Item {
   id: number;
@@ -80,50 +83,82 @@ export const CollapseList = ({ items }: Props) => {
   };
 
   return (
-    <div>
-      {items.map((item) => (
-        <Card
-          key={item.id}
-          sx={{ background: "white", textAlign: "left", border: "1px solid rgb(223,223,223)", mt: 0.5 }}
-        >
-          <CardHeader
-            sx={{ cursor: "pointer", background: "#ffe5e7", paddingY: 1, paddingX: { xs: 1, md: 3 } }}
-            onClick={() => handleExpandClick(item.id)}
-            title={
-              <Typography
-                sx={{
-                  fontSize: { xs: "14px", md: "16px" },
-                  fontWeight: 600,
-                  color: expanded === item.id ? "#fe3168" : "#58595B",
-                }}
-              >
-                {item.title}
-              </Typography>
-            }
-            action={
-              <IconButton
-                className={`${classes.expand} ${expanded === item.id ? classes.expandOpen : ""}`}
-                onClick={() => handleExpandClick(item.id)}
-                aria-expanded={expanded === item.id}
-                aria-label="show more"
-              >
-                <ExpandMoreOutlinedIcon />
-              </IconButton>
-            }
-          />
-          <Collapse in={expanded === item.id} timeout="auto" unmountOnExit>
-            <CardContent sx={{ padding: "0 !important" }}>
-              <List component="div" disablePadding sx={{ padding: "0 !important" }}>
-                <ListItem>
-                  <Typography sx={{ fontSize: { xs: "12px", md: "15px" }, fontWeight: 500, color: "#58595B" }}>
-                    {HTMLReactParser(`${item?.content}`, options)}
-                  </Typography>
-                </ListItem>
-              </List>
-            </CardContent>
-          </Collapse>
-        </Card>
-      ))}
-    </div>
+    <Box
+      sx={{
+        maxWidth: 800,
+        gap: "1rem",
+        width: "100%",
+      }}
+    >
+      <Box
+        display={"flex"}
+        flexDirection={"column"}
+        sx={{ width: "100%" }}
+      >
+        {items.map((item) => (
+          <Card
+            key={item.id}
+            sx={{ 
+              background: "white", 
+              textAlign: "left", 
+              // border: "1px solid rgb(223,223,223)", 
+              border: "none",
+              boxShadow: "2px 2px 12px rgba(0, 0, 0, 0.1)",
+              mt: 0.5, 
+              width: "100%",
+              // padding: "1rem",
+            }}
+          >
+            <CardHeader
+              sx={{ cursor: "pointer", paddingX:"2rem", paddingY: "1rem"}}
+              // sx={{ cursor: "pointer" }}
+              onClick={() => handleExpandClick(item.id)}
+              title={
+                <Typography
+                  variant="body1"
+                  sx={{
+                    // fontSize: { xs: "14px", md: "16px" },
+                    fontWeight: 600,
+                    // color: expanded === item.id ? "#fe3168" : "#58595B",
+                  }}
+                >
+                  {item.title}
+                </Typography>
+              }
+              action={
+                <IconButton
+                  className={`${classes.expand} ${expanded === item.id ? classes.expandOpen : ""}`}
+                  onClick={() => handleExpandClick(item.id)}
+                  aria-expanded={expanded === item.id}
+                  aria-label="show more"
+                >
+                  <ExpandMoreOutlinedIcon />
+                </IconButton>
+              }
+            />
+            <Collapse in={expanded === item.id} timeout="auto" unmountOnExit>
+              <CardContent sx={{ paddingX: "2rem !important", paddingBottom: "1rem !important", paddingTop: 0 }}>
+                <List component="div" disablePadding sx={{ padding: "0 !important" }}>
+                  <ListItem disablePadding>
+                    <Typography
+                      variant="body1"
+                      sx={{ 
+                        // fontSize: { xs: "12px", md: "15px" }, 
+                        // fontWeight: 500, 
+                        // color: "#58595B" 
+                        lineHeight: 1.2
+                      }}
+                    >
+                      {HTMLReactParser(`${item?.content}`, options)}
+                    </Typography>
+                  </ListItem>
+                </List>
+              </CardContent>
+            </Collapse>
+          </Card>
+        ))}
+      </Box>
+
+    </Box>
   );
 };

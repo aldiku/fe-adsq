@@ -1,4 +1,4 @@
-import React from "react";
+import React, { JSX } from "react";
 import { Grid, Button, useMediaQuery } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -51,14 +51,16 @@ const SocialButtons: React.FC = () => {
       })}
     >
       {socialButtons.map((button) => (
-        <Grid item key={button.name}>
+        <Grid key={button.name}>
           <Button
+            variant="text"
             sx={({ palette }) => ({
               fontSize:"0.9em",
               color: "white",
               minWidth: 0,
               ":hover": {
                 color: palette.primary.main,
+                background: "none",
               },
             })}
             href={button.href}

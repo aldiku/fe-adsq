@@ -44,7 +44,26 @@ const NavbarItems = () => {
                 >
                     {hasChildren ? (
                         <>
-                            <Box pr={5}>{item.title}</Box> <Icon icon="iconamoon:arrow-right-2-bold" width={18} style={{ position: 'absolute', right: 0 }} />
+                            <Box
+                                color={"#3A4F66"}
+                                // p={5}
+                                sx={{
+                                    padding: "4px",
+                                    pr: "8px"
+                                }}
+                            >
+                                {item.title}
+                            </Box> 
+                            <Icon 
+                                icon="iconamoon:arrow-right-2-bold" 
+                                color={"#3A4F66"} 
+                                width={18} 
+                                style={{ 
+                                    // padding: "2px",
+                                    position: 'absolute', 
+                                    right: 0 
+                                }} 
+                            />
                             <Menu
                                 anchorEl={menuAnchor[menuKey]}
                                 open={Boolean(menuAnchor[menuKey])}
@@ -58,6 +77,7 @@ const NavbarItems = () => {
                     ) : (
                         <Link href={item.path} style={{ textDecoration: "none", color: "#3A4F66" }}>
                             <Box sx={{
+                                padding: "4px",
                                 color: "#3A4F66",
                                 '&:hover': {
                                     color: "#ee2645"

@@ -3,7 +3,7 @@
 import { AppDispatch, RootState } from "@/store";
 import { fetchService } from "@/store/landing-page/service";
 import { ResponseServices } from "@/types/landing-page/services.types";
-import { Box, Button, Card, Container, Grid, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, Container, Grid, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -44,7 +44,7 @@ const LayananAdsqoo = () => {
               flexDirection: "column",
               alignItems: "center",
               gap: "2rem",
-              px: "2rem"
+              // px: "2rem"
               // px: {
               //   md: 14,
               //   xs: 3,
@@ -77,10 +77,10 @@ const LayananAdsqoo = () => {
                   // fontSize: "22px",
                   // letterSpacing: "-.7px",
                   // "@media(width< 900px)": {
-                    // mr: 0,
-                    // mt: 3,
-                    // mb: 6,
-                    // textAlign: "center",
+                  // mr: 0,
+                  // mt: 3,
+                  // mb: 6,
+                  // textAlign: "center",
                   // },
                 }}
               >
@@ -120,6 +120,7 @@ const LayananAdsqoo = () => {
                 />
               </Grid> */}
             <Box
+              data-aos="fade-up"
               // container spacing={1}
               sx={{
                 display: "grid",
@@ -144,86 +145,88 @@ const LayananAdsqoo = () => {
 
                 return (
                   <Grid
+                    width={"100%"}
                     key={index}
                   >
                     <Card
                       key={index}
                       sx={{
                         background: "white",
-                        paddingBottom: 1,
                         marginX: "auto",
                         // width: { xs: "75%", md: "100%" },
                         borderRadius: "2rem",
-                        boxShadow: "2px 2px 12px rgba(0, 0, 0, 0.1)",
+                        boxShadow: theme => theme.shadows[1],
                       }}
                     >
-                      <Box
-                        sx={{
-                          display: "flex",
-                          flexDirection: "column",
-                          alignItems: "center",
-                          justifyContent: "start",
-                          paddingY: { xs: "10px", md: "10px" },
-                          // paddingX: "10px",
-                          height: "100%",
-                        }}
-                      >
-                        <Box
-                          component="img"
-                          src={image}
-                          alt={item?.name}
-                          sx={{
-                            // width: { xs: "100px", md: "100%" },
-                            height: "auto",
-                            maxWidth: { xs: "100px", lg: "100px" },
-                            aspectRatio: "1 / 1",
-                            marginTop: "0.5rem",
-                            // marginX: 3,
-                            "@media(width <= 1200px)": {
-                              marginTop: 1,
-                              marginX: 1,
-                            },
-                          }}
-                        />
-                        <Typography
-                          variant="body1"
-                          fontWeight={700}
-                          color="text.primary"
-                          textAlign="center"
-                          marginTop={1}
-                          marginBottom={1}
-                          sx={{
-                            letterSpacing: -0.4,
-                            // textTransform: "lowercase"
-                          }}
-                        >
-                          {item?.name}
-                        </Typography>
+                      <CardContent>
                         <Box
                           sx={{
-                            marginTop: "auto",
-                            width: "100%",
                             display: "flex",
-                            justifyContent: "center",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "start",
+                            // paddingY: { xs: "10px", md: "10px" },
+                            // paddingX: "10px",
+                            height: "100%",
                           }}
                         >
-                          {/* <Link href={item?.path}> */}
-                          <Button
-                              variant="contained"
-                              color="primary"
+                          <Box
+                            component="img"
+                            src={image}
+                            alt={item?.name}
                             sx={{
-                              borderRadius: (theme) => theme.shape.pill,
-                              width: "100%",
+                              // width: { xs: "100px", md: "100%" },
+                              height: "auto",
+                              maxWidth: { xs: "100px", lg: "100px" },
+                              aspectRatio: "1 / 1",
+                              marginTop: "0.5rem",
+                              // marginX: 3,
+                              "@media(width <= 1200px)": {
+                                marginTop: 1,
+                                marginX: 1,
+                              },
                             }}
-                            onClick={() => {
-                              handleButtonSelanjutnya(item?.path);
+                          />
+                          <Typography
+                            variant="body1"
+                            fontWeight={700}
+                            color="text.primary"
+                            textAlign="center"
+                            marginTop={1}
+                            marginBottom={1}
+                            sx={{
+                              letterSpacing: -0.4,
+                              // textTransform: "lowercase"
                             }}
                           >
-                            Selanjutnya
-                          </Button>
-                          {/* </Link> */}
+                            {item?.name}
+                          </Typography>
+                          <Box
+                            sx={{
+                              marginTop: "auto",
+                              width: "100%",
+                              display: "flex",
+                              justifyContent: "center",
+                            }}
+                          >
+                            {/* <Link href={item?.path}> */}
+                            <Button
+                              variant="contained"
+                              color="primary"
+                              sx={{
+                                borderRadius: (theme) => theme.shape.pill,
+                                width: "100%",
+                              }}
+                              onClick={() => {
+                                handleButtonSelanjutnya(item?.path);
+                              }}
+                            >
+                              Selanjutnya
+                            </Button>
+                            {/* </Link> */}
+                          </Box>
                         </Box>
-                      </Box>
+                      </CardContent>
                     </Card>
                   </Grid>
                 )

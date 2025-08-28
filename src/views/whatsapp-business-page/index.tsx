@@ -31,14 +31,15 @@ const WhatsappBusinessPage = () => {
           <PaketWhatsapp />
         </Grid>
 
-        <Grid sx={{ my: { xs: 15, md: 20 } }}>
+        <Grid sx={{ my: "3rem" }}>
           <Typography
-            data-aos="fade-in"
+            data-aos="fade-up"
+            variant="h1"
             sx={{
-              fontSize: { xs: "32px", md: "40px" },
-              fontWeight: 600,
-              color: "#6D6E70",
-              letterSpacing: "-1px",
+              // fontSize: { xs: "32px", md: "40px" },
+              // fontWeight: 600,
+              // color: "#6D6E70",
+              // letterSpacing: "-1px",
               textAlign: "center",
             }}
           >

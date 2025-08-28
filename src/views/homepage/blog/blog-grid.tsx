@@ -76,7 +76,7 @@ const BlogGrid = () => {
                             <CardMedia
                                 component="img"
                                 height="140"
-                                image={item.image}
+                                image="\assets\images\index\placeholder.png"
                                 alt={item.title}
                             />
                             <CardContent
@@ -91,17 +91,6 @@ const BlogGrid = () => {
                                     <Typography variant="body2">{item.description}</Typography>
                                     <Typography variant="caption">{item.type}</Typography>
                                 </Box>
-                                {/* <CardActions
-                                    sx={{
-                                        display: "flex",
-                                        flexDirection: "row",
-                                        gap: "2rem",
-                                        justifyContent: "space-between",
-                                    }}
-                                >
-                                    <Button variant="text">Details</Button>
-                                    <Button variant="contained">Order</Button>
-                                </CardActions> */}
                             </CardContent>
                         </Card>
                     </Box>

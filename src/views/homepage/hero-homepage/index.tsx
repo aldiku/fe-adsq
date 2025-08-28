@@ -162,10 +162,10 @@ const HeroViews = (props: Props) => {
             position: 'relative', 
             height: '100%', 
             display: 'flex', 
-            flexDirection: 'column', 
+            flexDirection: 'column',  
             px: {xs: 6, sm: 10}, 
-            pb: 20, 
             pt: {xs: 6, sm: 20}, 
+            pb: 20, 
           }}
         >
           <Box
@@ -183,21 +183,25 @@ const HeroViews = (props: Props) => {
               },
             }}
           >
-            {/* <h1
-              style={{
-                fontSize: '3rem',
-                fontWeight: '800',
-                lineHeight: '1',
-              }}
+            <Typography 
+              variant="h2" 
+              component={"h1"}
+              fontSize={{
+                  xs: 32,
+                  sm: 40,
+                }}  
             >
               {data?.headline} {data?.tagline}
-            </h1> */}
-            <Typography variant="h2" component={"h1"}>
-              {data?.headline} {data?.tagline}
             </Typography>
-            <p style={{ marginTop: '1.5rem', fontSize: '1.125rem' }}>
+            <Typography 
+              variant="body1"
+              
+              style={{ 
+                marginTop: '1.5rem', 
+              }}
+            >
               {data?.description}
-            </p>
+            </Typography>
             <Box sx={{ marginTop: '2.5rem', display: 'flex', flexDirection: 'column', gap: '0.75rem', "@media (min-width: 768px)": { flexDirection: 'row' }, lg: { justifyContent: 'flex-start' } }}>
               {data?.button_order?.show && (
                 <Button

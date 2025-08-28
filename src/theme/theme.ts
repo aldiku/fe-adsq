@@ -293,7 +293,7 @@ export const colorSchemes = {
             divider: alpha(gray[300], 0.4),
             background: {
                 default: 'hsl(0, 0%, 99%)',
-                paper: 'hsl(260, 23%, 97%)',
+                paper: 'hsla(0, 20%, 97%, 1.00)',
             },
             text: {
                 primary: gray[800],
@@ -426,8 +426,9 @@ export const shape = {
 // @ts-ignore
 const defaultShadows: Shadows = [
     'none',
-    'var(--template-palette-baseShadow)',
-    ...defaultTheme.shadows.slice(2),
+    '0px 4px 12px rgba(0, 0, 0, 0.1)',
+    "0 2px 4px rgba(0, 0, 0, 0.2)",
+    ...defaultTheme.shadows.slice(2), 
 ];
 export const shadows = defaultShadows;
 
