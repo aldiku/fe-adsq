@@ -25,9 +25,21 @@ declare module '@mui/material/styles' {
     interface Palette {
         baseShadow: string;
     }
+
+    interface ThemeOptions {
+        shape: {
+            borderRadius: number;
+            pill: string;
+        };
+    }
 }
 
-const defaultTheme = createTheme();
+const defaultTheme = createTheme({
+    shape: {
+        borderRadius: 8,
+        pill: "2rem",
+    },
+});
 
 const customShadows: Shadows = [...defaultTheme.shadows];
 
@@ -37,11 +49,11 @@ export const brand = {
     200: 'hsl(0, 100%, 80%)',
     300: 'hsl(0, 100%, 65%)',
     400: 'hsl(351, 85%, 52%)',
-    500: 'hsl(0, 98%, 42%)',
-    600: 'hsl(0, 98%, 55%)',
+    500: 'hsl(0, 98%, 55%)',
+    600: 'hsl(0, 98%, 42%)',
     700: 'hsl(0, 100%, 35%)',
-    800: 'hsl(0, 100%, 16%)',
-    900: 'hsl(0, 100%, 21%)',
+    800: 'hsl(0, 100%, 21%)',
+    900: 'hsl(0, 100%, 16%)',
 };
 
 export const gray = {
@@ -281,7 +293,7 @@ export const colorSchemes = {
             divider: alpha(gray[300], 0.4),
             background: {
                 default: 'hsl(0, 0%, 99%)',
-                paper: 'hsl(260, 23%, 97%)',
+                paper: 'hsla(0, 20%, 97%, 1.00)',
             },
             text: {
                 primary: gray[800],
@@ -408,13 +420,15 @@ export const typography = {
 
 export const shape = {
     borderRadius: 8,
+    pill: "2rem",
 };
 
 // @ts-ignore
 const defaultShadows: Shadows = [
     'none',
-    'var(--template-palette-baseShadow)',
-    ...defaultTheme.shadows.slice(2),
+    '0px 4px 12px rgba(0, 0, 0, 0.1)',
+    "0 2px 4px rgba(0, 0, 0, 0.2)",
+    ...defaultTheme.shadows.slice(2), 
 ];
 export const shadows = defaultShadows;
 

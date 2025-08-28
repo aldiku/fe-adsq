@@ -69,7 +69,7 @@ const TestimoniCarousel = () => {
                         display: "flex",
                         width: "100%",
                         height: "100%",
-                        boxShadow: "2px 2px 12px rgba(0, 0, 0, 0.1)",
+                        boxShadow: theme => theme.shadows[1],
                         borderRadius: "2rem",
                         overflow: "hidden",
                         backgroundColor: "background.default",

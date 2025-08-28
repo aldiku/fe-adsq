@@ -1,3 +1,4 @@
+import { theme } from "@/theme/AppThemes";
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 
@@ -13,15 +14,27 @@ const Hero = () => {
           height: "100%",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
+          backgroundPosition: "center",
+          position: "relative",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.4)",
+            zIndex: 1,
+          },
         }}
       >
-        <Container maxWidth="lg" sx={{ height: "100%", display: "flex", alignItems: "end" }}>
+        <Box maxWidth="lg" sx={{ height: "100%", display: "flex", alignItems: "end", position: "relative", zIndex: 2 }}>
           <Grid
             sx={{
               px: 3,
               pt: 3,
               display: "grid",
-              gridTemplateColumns: { xs: "1fr", md: "1fr 1fr", xl: "1fr 1fr" },
+              gridTemplateColumns: { xs: "1fr", md: "2fr 1fr" },
             }}
           >
             <Grid
@@ -32,38 +45,16 @@ const Hero = () => {
                 "@media(width > 1700px)": { paddingLeft: 15, paddingRight: 5 },
                 "@media(900px >=width < 1100px)": { paddingTop: 0 },
                 "@media(width < 900px)": { order: 0 },
+                "@media(width < 600px)": { paddingLeft: 2, paddingRight: 2 }
               }}
             >
               <Box>
                 <Typography
                   data-aos="zoom-in"
+                  variant="h2"
+                  color="white"
                   sx={{
-                    color: "#009645",
-                    fontWeight: 500,
-                    letterSpacing: "-1px",
-                    lineHeight: 1.3,
-                    "@media(width > 1800px)": {
-                      fontSize: "58px",
-                    },
-                    "@media(1500px <= width < 1800px)": {
-                      fontSize: "48px",
-                    },
-                    "@media(1300px <= width < 1500px)": {
-                      fontSize: "44px",
-                    },
-                    "@media(1000px <=width < 1300px)": {
-                      fontSize: "36px",
-                    },
-                    "@media(500px <= width < 1100px)": {
-                      fontSize: "28px",
-                    },
-                    "@media (width < 900px)": {
-                      textAlign: "center",
-                    },
-                    "@media(width < 500px)": {
-                      fontSize: "24px",
-                      mb: 1,
-                    },
+                    textShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
                   }}
                 >
                   Dapatkan Centang Hijau <br /> (Verified) di{" "}
@@ -89,27 +80,10 @@ const Hero = () => {
               >
                 <Typography
                   data-aos="fade-in"
+                  variant="body1"
+                  color="white"
                   sx={{
-                    color: "#009645",
-                    fontSize: "12px",
-                    fontWeight: 400,
-                    letterSpacing: "-.3px",
-
-                    "@media(width > 1700px)": {
-                      fontSize: "28px",
-                    },
-                    "@media(1500px <= width < 1700px)": {
-                      fontSize: "22px",
-                    },
-                    "@media(1100px <=width < 1500px)": {
-                      fontSize: "20px",
-                    },
-                    "@media(width < 1100px)": {
-                      fontSize: "16px",
-                    },
-                    "@media (width < 900px)": {
-                      textAlign: "center",
-                    },
+                    textShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
                   }}
                 >
                   <q style={{ marginLeft: "-5px" }}>
@@ -133,109 +107,42 @@ const Hero = () => {
                   },
                 }}
               >
-                  <Button
-                    variant="contained"
-                    sx={{
-                      borderRadius: 10,
-                      color: "white",
-                      fontSize: "12px",
-                      paddingX: 5,
-                      fontWeight: 400,
-                      letterSpacing: "-.3px",
+                <Button
+                  variant="contained"
+                  sx={{
+                    borderRadius: (theme.vars || theme).shape.pill,
+                    paddingX: "2rem"
+                  }}
+                  onClick={() =>
+                    router.push(
+                      "/dashboards/",
+                    )
+                  }
+                >
+                  Order
+                </Button>
 
-                      "@media(width > 1700px)": {
-                        fontSize: "24px",
-                      },
-                      "@media(1500px <= width < 1700px)": {
-                        fontSize: "24px",
-                      },
-                      "@media(1100px <=width < 1500px)": {
-                        fontSize: "18px",
-                      },
-                      "@media(width < 1100px)": {
-                        fontSize: "16px",
-                      },
-                      "@media (width < 900px)": {
-                        textAlign: "center",
-                      },
-                    }}
-                    onClick={() =>
-                      router.push(
-                          "/dashboards/",
-                      )
-                    }
-                  >
-                    Order
-                  </Button>
+                <Button
+                  variant="outlined"
+                  sx={{
+                    borderRadius: (theme.vars || theme).shape.pill,
+                  }}
+                  onClick={() => router.push("/book-meeting")}
+                >
+                  Book Meeting
+                </Button>
 
-                  <Button
-                    variant="contained"
-                    sx={{
-                      backgroundColor: "#1ebc32",
-                      borderRadius: 10,
-                      color: "white",
-                      fontSize: "12px",
-                      paddingX: 3,
-                      fontWeight: 400,
-                      letterSpacing: "-.3px",
-
-                      ":hover": {
-                        backgroundColor: "#1d8e2d",
-                      },
-                      "@media(width > 1700px)": {
-                        fontSize: "24px",
-                      },
-                      "@media(1500px <= width < 1700px)": {
-                        fontSize: "24px",
-                      },
-                      "@media(1100px <=width < 1500px)": {
-                        fontSize: "18px",
-                      },
-                      "@media(width < 1100px)": {
-                        fontSize: "16px",
-                      },
-                      "@media (width < 900px)": {
-                        textAlign: "center",
-                      },
-                    }}
-                    onClick={() => router.push("/book-meeting")}
-                  >
-                    Book Meeting
-                  </Button>
-
-                  <Button
-                    variant="contained"
-                    color="info"
-                    sx={{
-                      borderRadius: 10,
-                      color: "white",
-                      fontSize: "12px",
-                      paddingX: 3,
-                      fontWeight: 400,
-                      letterSpacing: "-.3px",
-
-                      "@media(width > 1700px)": {
-                        fontSize: "24px",
-                      },
-                      "@media(1500px <= width < 1700px)": {
-                        fontSize: "24px",
-                      },
-                      "@media(1100px <=width < 1500px)": {
-                        fontSize: "18px",
-                      },
-                      "@media(width < 1100px)": {
-                        fontSize: "16px",
-                      },
-                      "@media (width < 900px)": {
-                        textAlign: "center",
-                      },
-                    }}
-                    onClick={() =>
-                      router.push("/whatsapp-business/book-meeting")
-                    }
-                  >
-                    Free Trial
-                  </Button>
+                <Button
+                  variant="outlined"
+                  sx={{
+                    borderRadius: (theme.vars || theme).shape.pill,
+                  }}
+                  onClick={() =>
+                    router.push("/whatsapp-business/book-meeting")
+                  }
+                >
+                  Free Trial
+                </Button>
               </Box>
             </Grid>
 
@@ -266,7 +173,7 @@ const Hero = () => {
                     },
                     "@media(width < 900px)": {
                       marginLeft: 0,
-                      width: "100%",
+                      width: "auto",
                       maxHeight: "350px",
                     },
                   }}
@@ -274,7 +181,7 @@ const Hero = () => {
               </Box>
             </Grid>
           </Grid>
-        </Container>
+        </Box>
       </Box>
     </>
   );

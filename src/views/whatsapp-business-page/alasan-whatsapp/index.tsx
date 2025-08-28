@@ -1,4 +1,4 @@
-import { Container } from "@mui/material";
+import { CardContent, Container } from "@mui/material";
 import { Card } from "@mui/material";
 import { Box, Typography } from "@mui/material";
 import React from "react";
@@ -6,17 +6,34 @@ import React from "react";
 const AlasanWhatsapp = () => {
   return (
     <>
-      <Box sx={{ mt: 10 }}>
-        <Container>
+      <Box 
+        sx={{ mt: "2.5rem" }}
+        paddingX={{
+          xs: "1rem",
+          sm: "2rem",
+          md: "4rem",
+          xl: "8rem",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "2rem",
+            // padding: 0,
+          }}
+        >
           <Box>
             <Typography
               data-aos="fade-up"
+              variant="h1"
               sx={{
-                color: "#808184",
+                // color: "#808184",
                 textAlign: "center",
-                fontWeight: 600,
-                fontSize: { xs: "28px", md: "32px", lg: "40px" },
-                letterSpacing: "-.3px",
+                // fontWeight: 600,
+                // fontSize: { xs: "28px", md: "32px", lg: "40px" },
+                // letterSpacing: "-.3px",
               }}
             >
               Mengapa Harus Menggunakan <br />
@@ -26,59 +43,73 @@ const AlasanWhatsapp = () => {
 
           <Box
             sx={{
-              mt: 7,
-              mx: 15,
-              "@media(900px <= width< 1100px)": {
-                gridTemplateColumns: "1fr",
-                marginX: 10,
-              },
-              "@media(600px <= width < 900px)": {
-                marginX: 10,
-              },
-              "@media(460px <= width < 600px)": {
-                marginX: 5,
-              },
-              "@media(width < 460px)": {
-                marginX: 0,
+              display: "grid",
+              gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr", md: "1fr 1fr 1fr" },
+              gap: "1rem",
+              justifyContent: "flex-start",
+              // Custom grid for sm breakpoint
+              "@media (min-width:600px) and (max-width:899.95px)": {
+                gridTemplateColumns: "1fr 1fr",
               },
             }}
           >
-            {listAlasan.map((item, index) => (
-              <Card
-                data-aos="fade-up"
-                key={index}
-                sx={{
-                  background: "white",
-                  boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-                  mt: index === 0 ? 0 : 5,
-                  paddingX: { xs: 3, md: 8 },
-                  paddingY: 5,
-                  borderRadius: 3,
-                }}
-              >
-                <Box>
-                  <Typography
-                    sx={{ fontSize: { xs: "14px", sm: "20px", md: "24px" }, fontWeight: 700, color: "#6D6E70" }}
-                  >
-                    {item.title}
-                  </Typography>
-                </Box>
-                <Box>
-                  <Typography
-                    sx={{
-                      mt: 1,
-                      color: "#6D6E70",
-                      fontSize: { xs: "12px", sm: "14px", md: "18px", lg: "22px" },
-                      fontWeight: 300,
-                    }}
-                  >
-                    {item.desc}
-                  </Typography>
-                </Box>
-              </Card>
-            ))}
+            <Card
+              data-aos="fade-up"
+              sx={{
+                background: "white",
+                boxShadow: theme => theme.shadows[1],
+                borderRadius: 3,
+              }}
+            >
+              <CardContent sx={{ padding: "1.5rem !important" }}>
+                <Typography variant="h5" lineHeight={1.1}>
+                  {listAlasan[0].title}
+                </Typography>
+                <Typography variant="body1" sx={{ mt: 1 }}>
+                  {listAlasan[0].desc}
+                </Typography>
+              </CardContent>
+            </Card>
+            <Card
+              data-aos="fade-up"
+              sx={{
+                background: "white",
+                boxShadow: theme => theme.shadows[1],
+                borderRadius: 3,
+              }}
+            >
+              <CardContent sx={{ padding: "1.5rem !important" }}>
+                <Typography variant="h5" lineHeight={1.1}>
+                  {listAlasan[1].title}
+                </Typography>
+                <Typography variant="body1" sx={{ mt: 1 }}>
+                  {listAlasan[1].desc}
+                </Typography>
+              </CardContent>
+            </Card>
+            <Card
+              data-aos="fade-up"
+              sx={{
+                background: "white",
+                boxShadow: theme => theme.shadows[1],
+                borderRadius: 3,
+                // Fill two columns on sm screens
+                "@media (min-width:600px) and (max-width:899.95px)": {
+                  gridColumn: "1 / span 2",
+                },
+              }}
+            >
+              <CardContent sx={{ padding: "1.5rem !important" }}>
+                <Typography variant="h5" lineHeight={1.1}>
+                  {listAlasan[2].title}
+                </Typography>
+                <Typography variant="body1" sx={{ mt: 1 }}>
+                  {listAlasan[2].desc}
+                </Typography>
+              </CardContent>
+            </Card>
           </Box>
-        </Container>
+        </Box>
       </Box>
     </>
   );

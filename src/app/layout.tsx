@@ -11,6 +11,7 @@ import Sidebar from "@/components/front/navbar/sidebar";
 import { Box, createTheme } from "@mui/material";
 import { Footer } from "@/components/front/footer";
 import { ThemeProvider } from "@mui/styles";
+import { theme } from "@/theme/AppThemes";
 
 const publicSans = Public_Sans({
   subsets: ["latin"],
@@ -21,9 +22,9 @@ const publicSans = Public_Sans({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
-  const theme = createTheme({
-    // your custom palette, typography, etc.
-  });
+  // const theme = createTheme({
+  //   // your custom palette, typography, etc.
+  // });
 
   return (
     <html lang="id" className={publicSans.className}>

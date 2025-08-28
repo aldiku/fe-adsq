@@ -3,7 +3,7 @@
 import { AppDispatch, RootState } from "@/store";
 import { fetchService } from "@/store/landing-page/service";
 import { ResponseServices } from "@/types/landing-page/services.types";
-import { Box, Button, Card, Container, Grid, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, Container, Grid, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -31,17 +31,20 @@ const LayananAdsqoo = () => {
     <>
       <Box
         bgcolor="background.paper"
-        sx={{ 
+        sx={{
           py: "2.5rem",
-          width: "100%" 
+          width: "100%"
         }}
       >
         <Container>
-          <Grid
-            container
+          <Box
+            // container
             sx={{
-              justifyContent: "center",
-              gap: "2rem",  
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "2rem",
+              // px: "2rem"
               // px: {
               //   md: 14,
               //   xs: 3,
@@ -73,12 +76,12 @@ const LayananAdsqoo = () => {
                   // color: "#6D6E70",
                   // fontSize: "22px",
                   // letterSpacing: "-.7px",
-                  "@media(width< 900px)": {
-                    mr: 0,
-                    mt: 3,
-                    mb: 6,
-                    // textAlign: "center",
-                  },
+                  // "@media(width< 900px)": {
+                  // mr: 0,
+                  // mt: 3,
+                  // mb: 6,
+                  // textAlign: "center",
+                  // },
                 }}
               >
                 {data?.description}
@@ -96,7 +99,7 @@ const LayananAdsqoo = () => {
                 // },
               // }}
             > */}
-              {/* <Grid
+            {/* <Grid
                 sx={{
                   display: "grid",
                   position: "relative",
@@ -116,43 +119,54 @@ const LayananAdsqoo = () => {
                   }}
                 />
               </Grid> */}
-              <Grid
-                container spacing={1}
-                sx={{
-                  display: "flex",
-                  alignItems: "stretch",
-                  flexWrap: "wrap",
-                  gap: 1.5,
-                  justifyContent: "center",
-                  mt: 0,
-                  paddingBottom: "20px",
-                  // zIndex: "1",
-                }}
-              >
-                {sortedItem?.map((item, index) => {
+            <Box
+              data-aos="fade-up"
+              // container spacing={1}
+              sx={{
+                display: "grid",
+                gridTemplateColumns: {
+                  xs: '1fr',
+                  sm: '1fr 1fr',
+                  md: '1fr 1fr',
+                  lg: '1fr 1fr 1fr 1fr'
+                },
+                alignItems: "stretch",
+                flexWrap: "wrap",
+                gap: 1.5,
+                justifyContent: "center",
+                mt: 0,
+                paddingBottom: "20px",
+                // zIndex: "1",
+              }}
+            >
+              {sortedItem?.map((item, index) => {
 
-                  const image = process.env.NEXT_PUBLIC_HOST_URL_IMAGE + item?.image
+                const image = process.env.NEXT_PUBLIC_HOST_URL_IMAGE + item?.image
 
-                  return (
-                    <Grid key={index}>
-                      <Card
-                        sx={{
-                          background: "white",
-                          paddingBottom: 1,
-                          marginX: "auto",
-                          // width: { xs: "75%", md: "100%" },
-                          borderRadius: "2rem",
-                          boxShadow: "2px 2px 12px rgba(0, 0, 0, 0.1)",
-                        }}
-                      >
+                return (
+                  <Grid
+                    width={"100%"}
+                    key={index}
+                  >
+                    <Card
+                      key={index}
+                      sx={{
+                        background: "white",
+                        marginX: "auto",
+                        // width: { xs: "75%", md: "100%" },
+                        borderRadius: "2rem",
+                        boxShadow: theme => theme.shadows[1],
+                      }}
+                    >
+                      <CardContent>
                         <Box
                           sx={{
                             display: "flex",
                             flexDirection: "column",
                             alignItems: "center",
                             justifyContent: "start",
-                            paddingY: { xs: "10px", md: "10px" },
-                            paddingX: "1rem",
+                            // paddingY: { xs: "10px", md: "10px" },
+                            // paddingX: "10px",
                             height: "100%",
                           }}
                         >
@@ -161,12 +175,12 @@ const LayananAdsqoo = () => {
                             src={image}
                             alt={item?.name}
                             sx={{
-                              width: { xs: "100px", md: "100%" },
+                              // width: { xs: "100px", md: "100%" },
                               height: "auto",
-                              maxWidth: { sm: "100px", lg: "160px" },
+                              maxWidth: { xs: "100px", lg: "100px" },
                               aspectRatio: "1 / 1",
-                              marginTop: 3,
-                              marginX: 3,
+                              marginTop: "0.5rem",
+                              // marginX: 3,
                               "@media(width <= 1200px)": {
                                 marginTop: 1,
                                 marginX: 1,
@@ -181,7 +195,8 @@ const LayananAdsqoo = () => {
                             marginTop={1}
                             marginBottom={1}
                             sx={{
-                              letterSpacing: -0.4
+                              letterSpacing: -0.4,
+                              // textTransform: "lowercase"
                             }}
                           >
                             {item?.name}
@@ -196,20 +211,11 @@ const LayananAdsqoo = () => {
                           >
                             {/* <Link href={item?.path}> */}
                             <Button
+                              variant="contained"
+                              color="primary"
                               sx={{
-                                borderRadius: "2rem",
+                                borderRadius: (theme) => theme.shape.pill,
                                 width: "100%",
-                                color: "white",
-                                fontSize: {
-                                  xs: "12px",
-                                  sm: "14px",
-                                  md: "16px",
-                                },
-                                backgroundColor: 
-                                  "primary.main",
-                                  "&:hover": {
-                                    backgroundColor: "primary.dark",
-                                  }
                               }}
                               onClick={() => {
                                 handleButtonSelanjutnya(item?.path);
@@ -220,13 +226,14 @@ const LayananAdsqoo = () => {
                             {/* </Link> */}
                           </Box>
                         </Box>
-                      </Card>
-                    </Grid>
-                  )
-                })}
-              </Grid>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                )
+              })}
+            </Box>
             {/* </Grid> */}
-          </Grid>
+          </Box>
         </Container>
       </Box>
     </>

@@ -17,6 +17,8 @@ import Typography from "@mui/material/Typography";
 import { CardHeader } from "@mui/material";
 import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 import Link from "next/link";
+import ProductCardWithModal from "@/components/front/shared/ProductCards";
+import { products } from "@/data/products";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -41,6 +43,8 @@ const useStyles = makeStyles((theme) =>
     },
   }),
 );
+
+const paketWhatsapp = products.filter(p => p.type === "whatsapp-business");
 
 const PaketWhatsapp = () => {
   const classes = useStyles();
@@ -74,16 +78,29 @@ const PaketWhatsapp = () => {
   return (
     <>
       <Box
-        sx={{ pt: 7, width: "100%", backgroundColor: "rgba(187,189,191, .17)" }}
+        id="paket-whatsapp"
+        paddingX= {{ xs: "1rem", sm: "2rem", md: "4rem", xl: "8rem" }}
+        sx={{ 
+          pt: "2.5rem", 
+          width: "100%", 
+          backgroundColor: "background.default"
+        }}
       >
-        <Container>
-          <Grid>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "2rem",
+          }}
+        >
             <Box data-aos="fade-down">
               <Typography
+                variant="h1"
                 sx={{
-                  fontWeight: 700,
-                  color: "#6D6E70",
-                  fontSize: { xs: "24px", md: "36px", lg: "44px" },
+                  // fontWeight: 700,
+                  // color: "#6D6E70",
+                  // fontSize: { xs: "24px", md: "36px", lg: "44px" },
                   textAlign: "center",
                 }}
               >
@@ -94,7 +111,7 @@ const PaketWhatsapp = () => {
             <Grid
               data-aos="fade-up"
               sx={{
-                mt: 5,
+                // mt: 5,
                 display: "grid",
                 alignItems: "normal",
                 "@media(width < 1100px)": {
@@ -106,105 +123,37 @@ const PaketWhatsapp = () => {
               <Grid
                 sx={{
                   display: "grid",
-                  gridTemplateColumns: "repeat(4, 250px)",
+                  // gridTemplateColumns: "repeat(4, 250px)",
+                  gridTemplateColumns: {
+                    xs: "1fr",
+                    sm: "1fr 1fr",
+                    lg: "1fr 1fr 1fr 1fr",
+                  },
                   width: "100%",
                   justifyContent: "center",
                   gridGap: "20px",
                   alignItems: "stretch",
                   mt: 0,
-                  "@media(width < 700px)": {
-                    gridTemplateColumns: "repeat(auto-fit, 250px)",
-                  },
+                  mb: "2rem",
+                  // "@media(width < 700px)": {
+                  //   gridTemplateColumns: "repeat(auto-fit, 250px)",
+                  // },
                 }}
               >
                 {paketWhatsapp.map((item, index) => (
-                  <Card
+                  <ProductCardWithModal
                     key={index}
-                    sx={{
-                      background: "white",
-                      width: "100%",
-                      borderTopLeftRadius: 15,
-                      borderTopRightRadius: 15,
-                      borderBottomLeftRadius: "0 !important",
-                      borderBottomRightRadius: "0 !important",
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                        height: "100%",
-                      }}
-                    >
-                      <Box sx={{ paddingX: 3 }}>
-                        <Typography
-                          fontWeight={700}
-                          color="#58595B"
-                          textAlign="center"
-                          marginTop={2}
-                          marginBottom={1}
-                          fontSize="20px"
-                          sx={{ letterSpacing: "-.3px", minHeight: "60px" }}
-                        >
-                          {item.name}
-                        </Typography>
-                      </Box>
-                      <Box sx={{ mt: 3, overflow: "hidden" }}>
-                        <Box
-                          component="img"
-                          src={item.image}
-                          alt={"expanded"}
-                          sx={{
-                            width: "auto",
-                            height: "125px",
-                            aspectRatio: "1/1",
-                            mb: 1,
-                          }}
-                        />
-                      </Box>
-
-                      <Box sx={{ px: 3, mb: 1 }}>
-                        {parse(item?.description ?? "")}
-                      </Box>
-
-                      <Box
-                        sx={{
-                          mt: "auto",
-                          mb: 2,
-                          width: "100%",
-                          display: "flex",
-                          justifyContent: "center",
-                        }}
-                      >
-                        <Link href={item.path}>
-                          <Button
-                            sx={{
-                              paddingY: 0.5,
-                              paddingX: 5,
-                              color: "white",
-                              fontSize: "16px",
-                              background:
-                                "radial-gradient(circle, rgba(251,55,66,1) 0%, rgba(217,61,131,1) 48%, rgba(193,36,116,1) 100%)",
-                              "&:hover": {
-                                background:
-                                  "radial-gradient(circle, rgba(191,31,41,1) 0%, rgba(203,51,119,1) 74%, rgba(166,41,104,1) 100%)",
-                              },
-                            }}
-                            onClick={(event) => handleClick(event, item.path)}
-                          >
-                            Order
-                          </Button>
-                        </Link>
-                      </Box>
-                    </Box>
-                  </Card>
+                    name={item.name}
+                    image={item.image}
+                    description={item.description}
+                    path={item.path}
+                    terms_conditions={item.details}
+                  />
                 ))}
               </Grid>
 
               {/* collapse list */}
-              <Grid
+              {/* <Grid
                 sx={{
                   display: "grid",
                   gridTemplateColumns: "repeat(4, 250px)",
@@ -277,126 +226,13 @@ const PaketWhatsapp = () => {
                     </Collapse>
                   </Card>
                 ))}
-              </Grid>
+              </Grid> */}
               {/* collapse list end */}
             </Grid>
-          </Grid>
-        </Container>
+        </Box>
       </Box>
     </>
   );
 };
 
 export default PaketWhatsapp;
-
-const paketWhatsapp = [
-  {
-    name: "Whatsapp Service + Chatbot",
-    image:
-      "assets/images/landing-page/whatsapp-business/paket-whatsapp/service.png",
-    path: "/campaign/whatsapp-business",
-    code: "WAB",
-    description:
-      "<p>WhatsApp Service (Interaktif CS) digunakan untuk mengirimkan pesan dan merespon pesan yang masuk dari pelanggan Anda secara real time yang dilengkapi dengan fitur Chatbot. WhatsApp interaktif sebagai media komunikasi antara CS dan pelanggan Anda menggunakan SenderID (pengirim) atas nama bisnis Anda yang telah terverifikasi</p>",
-    feature: `<ul>
-              <li>Free setup</li>
-              <li>Include monthly fee untuk 3 bulan pertama (Rp 1.000.000/bulan)</li>
-              <li>Include Chatbot max 5 FAQ ( FAQ &gt; 5, monthly fee Rp 1.500.000/bulan)</li>
-              <li>Include 2 CS/agent (penambahan agent Rp250.000/agent)</li>
-              <li>Pembuatan ID pengirim</li>
-              <li>Dashboard untuk operasional</li>
-              <li>Berisi 10.000 session dengan masa aktif 3 bulan</li>
-              </ul>
-
-              <p>Note:</p>
-
-              <ul>
-                <li>Hanya berlaku untuk perusahaan</li>
-                <li>Harus memiliki Business Manager ID veriﬁed Facebook Business</li>
-                <li>Harus memiliki NPWP, Website dan Email</li>
-                <li>Cara pembuatan Business Manager ID&nbsp;:&nbsp;<a href="https://bit.ly/3JSJKNo">https://bit.ly/3JSJKNo</a></li>
-                <li>NO Politics, NO 18+ Products, NO Racist/Discrimination Accounts</li>
-              </ul>
-      `,
-  },
-
-  {
-    name: "Whatsapp Authentication",
-    image:
-      "assets/images/landing-page/whatsapp-business/paket-whatsapp/auth.png",
-    path: "/campaign/whatsapp-business",
-    code: "WAB",
-    description: `
-                  <p>WhatsApp Authentication digunakan untuk mengirimkan pesan OTP (One Time Password) kepada pelanggan Anda untuk berbagai keperluan seperti mendaftar layanan atau aplikasi menggunakan SenderID (pengirim) atas nama bisnis Anda yang telah terverifikasi</p>
-                  `,
-    feature: `
-              <ul>
-              <li>Free setup</li>
-              <li>Free monthly fee</li>
-              <li>Pembuatan ID pengirim</li>
-              <li>Dashboard untuk operasional</li>
-              <li>Berisi 10.000 session dengan masa aktif 3 bulan</li>
-              </ul>
-
-              <p>Note:</p>
-
-              <ul>
-              <li>Hanya berlaku untuk perusahaan</li>
-              <li>Harus memiliki Business Manager ID veriﬁed Facebook Business</li>
-              <li>Harus memiliki NPWP, Website dan Email</li>
-              <li>Cara pembuatan Business Manager ID&nbsp;:&nbsp;<a href="https://bit.ly/3JSJKNo">https://bit.ly/3JSJKNo</a></li>
-              <li>NO Politics, NO 18+ Products, NO Racist/Discrimination Accounts</li>
-            </ul>
-    `,
-  },
-  {
-    name: "Whatsapp Utility",
-    image:
-      "assets/images/landing-page/whatsapp-business/paket-whatsapp/utility.png",
-    path: "/campaign/whatsapp-business",
-    code: "WAB",
-    description: `<p>WhatsApp Utility (Push Notifikasi) digunakan untuk mengirimkan pesan notifikasi kepada pelanggan Anda yang telah melakukan transaksi, reminder invoice dan notifikasi lainya secara real time kepada pelanggan Anda secara massal menggunakan SenderID (pengirim) atas nama bisnis Anda yang telah terverifikasi</p>`,
-    feature: `<ul>
-                <li>Free setup</li>
-                <li>Free monthly fee</li>
-                <li>Pembuatan ID pengirim</li>
-                <li>Dashboard untuk operasional</li>
-                <li>Berisi 10.000 session dengan masa aktif 3 bulan</li>
-              </ul>
-
-              <p>Note:</p>
-
-              <ul>
-                <li>Hanyua berlaku untuk perusahaan</li>
-                <li>Harus memiliki Business Manager ID veriﬁed Facebook Business</li>
-                <li>Harus memiliki NPWP, Website dan Email</li>
-                <li>Cara pembuatan Business Manager ID&nbsp;:&nbsp;<a href="https://bit.ly/3JSJKNo">https://bit.ly/3JSJKNo</a></li>
-                <li>NO Politics, NO 18+ Products, NO Racist/Discrimination Accounts</li>
-              </ul>`,
-  },
-  {
-    name: "Whatsapp Marketing",
-    image:
-      "assets/images/landing-page/whatsapp-business/paket-whatsapp/marketing.png",
-    path: "/campaign/whatsapp-business",
-    code: "WAB",
-    description: `<p>WhatsApp marketing (WA Blast) digunakan untuk mengirim pesan WA kepada pelanggan Anda secara massal menggunakan SenderID (pengirim) atas nama bisnis Anda yang telah terverifikasi</p>`,
-    feature: `<ul>
-                <li>Free setup</li>
-                <li>Free monthly fee</li>
-                <li>Pembuatan ID pengirim</li>
-                <li>Dashboard untuk operasional</li>
-                <li>Berisi 10.000 session dengan masa aktif 3 bulan</li>
-              </ul>
-
-              <p>Note:</p>
-
-              <ul>
-                <li>Hanya berlaku untuk perusahaan</li>
-                <li>Harus memiliki Business Manager ID veriﬁed Facebook Business</li>
-                <li>Harus memiliki NPWP, Website dan Email</li>
-                <li>Cara pembuatan Business Manager ID&nbsp;:&nbsp;<a href="https://bit.ly/3JSJKNo">https://bit.ly/3JSJKNo</a></li>
-                <li>NO Politics, NO 18+ Products, NO Racist/Discrimination Accounts</li>
-              </ul>`,
-  },
-];

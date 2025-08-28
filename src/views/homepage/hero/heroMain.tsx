@@ -22,7 +22,7 @@ const HeroMain = () => {
         >
           <Grid
             sx={{
-              paddingX: { xs: 2, md: 5, lg: 5, xl: 5 },
+              // paddingX: { xs: 2, md: 5, lg: 5, xl: 5 },
               paddingY: { xs: 5, md: 10, xl: 10 },
               "@media(1800px <= width)": {
                 paddingTop: 15,

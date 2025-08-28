@@ -27,11 +27,12 @@ const SmsAdvertisingPage = () => {
         <Grid>
           <Typography
             data-aos="fade-in"
+            variant="h1"
             sx={{
-              fontSize: { xs: "32px", md: "40px" },
-              fontWeight: 600,
-              color: "#6D6E70",
-              letterSpacing: "-1px",
+            //   fontSize: { xs: "32px", md: "40px" },
+            //   fontWeight: 600,
+            //   color: "#6D6E70",
+            //   letterSpacing: "-1px",
               textAlign: "center",
               mt:10
             }}

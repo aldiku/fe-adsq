@@ -42,7 +42,7 @@ const AlasanBeriklan = () => {
 	return (
 		<Box
 			bgcolor="background.paper"
-			sx={{ py: "2.5rem", width: "100%" }}
+			sx={{ py: { xs: "1.5rem", md: "2.5rem" }, width: "100%" }}
 			paddingX={{
 				xs: "1rem",
 				sm: "2rem",
@@ -63,7 +63,8 @@ const AlasanBeriklan = () => {
 			>
 				<Box 
 					data-aos="fade-down"
-					display={{ xs: "block", md: "flex" }}
+					// display={{ xs: "block", md: "flex" }}
+					display={"flex"}
 					flexDirection={"column"}
 					sx={{
 						gap: "0.5rem",
@@ -100,7 +101,7 @@ const AlasanBeriklan = () => {
 						<Box
 							key={index}
 							sx={{
-								boxShadow: "2px 2px 12px rgba(0, 0, 0, 0.1)",
+								boxShadow: theme => theme.shadows[1],
 								borderRadius: "2rem",
 								minWidth: 0, // prevents overflow
 							}}
