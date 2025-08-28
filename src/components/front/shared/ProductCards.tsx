@@ -73,6 +73,7 @@ const ProductCardWithModal: React.FC<ProductCardProps> = ({
                             alignItems: "center",
                             justifyContent: "space-between",
                             height: "100%",
+                            gap: "1rem",
                         }}
                     >
                         <Box>
@@ -84,32 +85,34 @@ const ProductCardWithModal: React.FC<ProductCardProps> = ({
                                 {name}
                             </Typography>
                         </Box>
-                        <Box sx={{ mt: 2, overflow: "hidden" }}>
-                            <Box
-                                component="img"
-                                src={image}
-                                alt={name}
-                                sx={{
-                                    maxWidth: "100%",
-                                    maxHeight: "125px",
-                                    objectFit: "contain",
-                                    borderRadius: 2,
-                                    mb: 3,
-                                    p: (theme) => ({
-                                        xs: 1,
-                                        sm: 2,
-                                    }),
-                                    boxSizing: "border-box",
-                                    // // Add extra padding if not 1:1 aspect ratio
-                                    // aspectRatio: "1 / 1",
-                                    // ...(image && {
-                                    //     padding: "12px",
-                                    // }),
-                                }}
-                            />
-                        </Box>
+                        {image && ( 
+                            <Box sx={{ overflow: "hidden" }}>
+                                <Box
+                                    component="img"
+                                    src={image}
+                                    alt={name}
+                                    sx={{
+                                        maxWidth: "100%",
+                                        maxHeight: "125px",
+                                        objectFit: "contain",
+                                        borderRadius: 2,
+                                        mb: 3,
+                                        p: (theme) => ({
+                                            xs: 1,
+                                            sm: 2,
+                                        }),
+                                        boxSizing: "border-box",
+                                        // // Add extra padding if not 1:1 aspect ratio
+                                        // aspectRatio: "1 / 1",
+                                        // ...(image && {
+                                        //     padding: "12px",
+                                        // }),
+                                    }}
+                                />
+                            </Box>
+                        )}
                         <Box sx={{ mb: 2 }}>
-                            <Typography variant="body1">
+                            <Typography variant="body1" color="text.secondary">
                                 {parse(description ?? "")}
                             </Typography>
                         </Box>

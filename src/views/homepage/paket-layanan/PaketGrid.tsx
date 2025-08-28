@@ -5,6 +5,8 @@ import ToggleButtonGroup, {
 } from '@mui/material/ToggleButtonGroup';
 import { styled } from '@mui/material/styles';
 import { Box, Button, Card, CardContent, Divider, Grid, Typography } from '@mui/material';
+import { products } from '@/data/products';
+import ProductCardWithModal from '@/components/front/shared/ProductCards';
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
     gap: '0.75rem',
@@ -70,7 +72,7 @@ const PaketGrid: React.FC<PaketGridProps> = ({
         event: React.MouseEvent<HTMLElement>,
         newFilter: string | null,
     ) => {
-        if ( newFilter === null) return; // Prevent deselecting all toggles
+        if (newFilter === null) return; // Prevent deselecting all toggles
         setFilter(newFilter);
         if (onFilterChange) {
             onFilterChange(newFilter);
@@ -79,25 +81,27 @@ const PaketGrid: React.FC<PaketGridProps> = ({
 
     const loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
 
-    const data = [
-        { id: 1, title: 'SMS LBA', type: 'sms', description: loremIpsum },
-        { id: 2, title: 'SMS Broadcast', type: 'sms', description: loremIpsum },
-        { id: 3, title: 'SMS OTP', type: 'sms', description: loremIpsum },
-        { id: 4, title: 'SMS Targeted', type: 'sms', description: loremIpsum },
-        { id: 5, title: 'Whatsapp Service', type: 'whatsapp', description: loremIpsum },
-        { id: 6, title: 'Whatsapp Authentication', type: 'whatsapp', description: loremIpsum },
-        { id: 7, title: 'Whatsapp Utility', type: 'whatsapp', description: loremIpsum },
-        { id: 8, title: 'Whatsapp Marketing', type: 'whatsapp', description: loremIpsum },
-        { id: 9, title: 'Whatsapp Blast', type: 'whatsapp', description: loremIpsum },
-        { id: 10, title: 'Billboard', type: 'outdoor', description: loremIpsum },
-        { id: 11, title: 'Videotron', type: 'outdoor', description: loremIpsum },
-        { id: 12, title: 'Facebook Ads', type: 'online', description: loremIpsum },
-        { id: 13, title: 'Instagram Ads', type: 'online', description: loremIpsum },
-        { id: 14, title: 'Youtube Ads', type: 'online', description: loremIpsum },
-        { id: 15, title: 'Google Ads', type: 'online', description: loremIpsum },
-        { id: 16, title: 'TikTok Ads', type: 'online', description: loremIpsum },
-        { id: 17, title: 'Push Notification Ads', type: 'online', description: loremIpsum },
-    ];
+    // const data = [
+    //     { id: 1, title: 'SMS LBA', type: 'sms', description: loremIpsum },
+    //     { id: 2, title: 'SMS Broadcast', type: 'sms', description: loremIpsum },
+    //     { id: 3, title: 'SMS OTP', type: 'sms', description: loremIpsum },
+    //     { id: 4, title: 'SMS Targeted', type: 'sms', description: loremIpsum },
+    //     { id: 5, title: 'Whatsapp Service', type: 'whatsapp', description: loremIpsum },
+    //     { id: 6, title: 'Whatsapp Authentication', type: 'whatsapp', description: loremIpsum },
+    //     { id: 7, title: 'Whatsapp Utility', type: 'whatsapp', description: loremIpsum },
+    //     { id: 8, title: 'Whatsapp Marketing', type: 'whatsapp', description: loremIpsum },
+    //     { id: 9, title: 'Whatsapp Blast', type: 'whatsapp', description: loremIpsum },
+    //     { id: 10, title: 'Billboard', type: 'outdoor', description: loremIpsum },
+    //     { id: 11, title: 'Videotron', type: 'outdoor', description: loremIpsum },
+    //     { id: 12, title: 'Facebook Ads', type: 'online', description: loremIpsum },
+    //     { id: 13, title: 'Instagram Ads', type: 'online', description: loremIpsum },
+    //     { id: 14, title: 'Youtube Ads', type: 'online', description: loremIpsum },
+    //     { id: 15, title: 'Google Ads', type: 'online', description: loremIpsum },
+    //     { id: 16, title: 'TikTok Ads', type: 'online', description: loremIpsum },
+    //     { id: 17, title: 'Push Notification Ads', type: 'online', description: loremIpsum },
+    // ];
+
+    const data = products;
 
     // Responsive columns
     const getColumns = () => {
@@ -121,7 +125,15 @@ const PaketGrid: React.FC<PaketGridProps> = ({
     }, []);
 
     // Filtered items
-    const filteredItems = data.filter(item => filter === 'all' || item.type === filter);
+    const filteredItems = data.filter(item =>
+        filter === 'all'
+            ? true
+            : filter === 'whatsapp'
+                ? ['whatsapp-business', 'whatsapp-blast'].includes(item.type)
+            : filter === 'online'
+                ? ['online', 'online-ads', 'push-notification'].includes(item.type)
+            : item.type === filter
+    );
     const maxRows = 2;
     const maxItems = columns * maxRows;
     const limitedItems = showAll ? filteredItems : filteredItems.slice(0, maxItems);
@@ -211,40 +223,48 @@ const PaketGrid: React.FC<PaketGridProps> = ({
                 }}
                 data-aos="fade-up"
             >
-                {limitedItems.map(item => (
-                    <Box key={item.id}>
-                        <Card>
-                            <CardContent
-                                sx={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    gap: "1rem",
-                                }}
-                            >
-                                <Box>
-                                    <Typography variant="h6">{item.title}</Typography>
-                                    <Typography variant="body2">{item.description}</Typography>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        flexDirection: "row",
-                                        gap: "2rem",
-                                        justifyContent: "space-between",
-                                    }}
-                                >
-                                    <Button variant="text">Details</Button>
-                                    <Button variant="contained">Order</Button>
-                                </Box>
-                            </CardContent>
-                        </Card>
-                    </Box>
+                {limitedItems.map((item, index) => (
+                    <ProductCardWithModal
+                        key={index}
+                        name={item.name}
+                        image={""}
+                        description={item.description}
+                        path={item.path}
+                        terms_conditions={item.details}
+                    />
+                    // <Box key={item.id}>
+                    //     <Card>
+                    //         <CardContent
+                    //             sx={{
+                    //                 display: "flex",
+                    //                 flexDirection: "column",
+                    //                 gap: "1rem",
+                    //             }}
+                    //         >
+                    //             <Box>
+                    //                 <Typography variant="h6">{item.name}</Typography>
+                    //                 <Typography variant="body2">{item.description}</Typography>
+                    //             </Box>
+                    //             <Box
+                    //                 sx={{
+                    //                     display: "flex",
+                    //                     flexDirection: "row",
+                    //                     gap: "2rem",
+                    //                     justifyContent: "space-between",
+                    //                 }}
+                    //             >
+                    //                 <Button variant="text">Details</Button>
+                    //                 <Button variant="contained">Order</Button>
+                    //             </Box>
+                    //         </CardContent>
+                    //     </Card>
+                    // </Box>
                 ))}
             </Box>
             {filteredItems.length > maxItems && !showAll && (
-                <Box sx={{ display: 'flex', justifyContent: 'center'}}>
-                    <Button 
-                        variant="outlined" 
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <Button
+                        variant="outlined"
                         color="secondary"
                         // sx={{
                         //     color: 'text.primary',
@@ -255,9 +275,9 @@ const PaketGrid: React.FC<PaketGridProps> = ({
                 </Box>
             )}
             {showAll && filteredItems.length > maxItems && (
-                <Box sx={{ display: 'flex', justifyContent: 'center'}}>
-                    <Button 
-                        variant="outlined" 
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <Button
+                        variant="outlined"
                         onClick={() => setShowAll(false)}
                         sx={{
                             color: 'text.primary',

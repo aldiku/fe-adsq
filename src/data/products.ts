@@ -1,4 +1,4 @@
-export type ProductType = "sms" | "whatsapp-business" | "whatsapp-blast" | "other"; // add more as needed
+export type ProductType = "sms" | "whatsapp-business" | "whatsapp-blast" | "online" | "outdoor"; // add more as needed
 
 export interface ProductData {
     name: string;
